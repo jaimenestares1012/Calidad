@@ -11,4 +11,4 @@ class Usuario(models.Model):
          verbose_name='Usuario'
          verbose_name_plural='Usuarios'
      def __str__(self):
-         return str(self.id) + '-' + str(self.nro_departamento) + '-' + self.nombres + '-' + self.apellidos + '-' + str(self.dni_usuario)
+         return self.nombres + ' ' + self.apellidos 

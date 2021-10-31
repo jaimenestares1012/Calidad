@@ -2,5 +2,30 @@ from django.contrib import admin
 from .models import Visita, Visitantes
 # Register your models here.
 
-admin.site.register(Visita)
-admin.site.register(Visitantes)
+
+class VisitaAdmin(admin.ModelAdmin):
+    list_display=(
+        'id',
+        'fecha_visita',
+        'usuario'
+    )
+    
+    
+    search_fields=('fecha_visita',)
+
+admin.site.register(Visita, VisitaAdmin)
+
+class VisitantesAdmin(admin.ModelAdmin):
+    list_display=(
+        'id',
+        'visita',
+        'dni_visita',
+        'nombre_visita',
+        'apellido_visita',
+
+    )
+    
+    
+    search_fields=('fecha_visita',)
+
+admin.site.register(Visitantes, VisitantesAdmin)

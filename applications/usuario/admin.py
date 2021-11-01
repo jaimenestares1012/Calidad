@@ -1,9 +1,15 @@
 from django.contrib import admin
-from .models import Usuario
+from .models import Pago, Usuario
 # Register your models here.
+
+# class UsuarioPagoInline(admin.TabularInline):
+#     model = Pago
+#     extra = 1
+#     autocomplete_fields = ['Servicios']
 
 
 class UsuarioAdmin(admin.ModelAdmin):
+    # inlines = (UsuarioPagoInline,)
     list_display=(
         'id',
         'nro_departamento',

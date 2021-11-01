@@ -29,8 +29,8 @@ class Trabajo_mantenimiento(models.Model):
         ('4', '04 am'),
     )
     nro_trabajadores=models.IntegerField("N° trabajadores")
-    dia_mantenimiento=models.DateTimeField("Fecha")
-    hora_mantenimiento=models.IntegerField("Hora", choices=horas)
+    dia_mantenimiento=models.DateField("Fecha")
+    hora_mantenimiento=models.CharField("Hora", max_length=12 ,choices=horas)
 
 
     class Meta:
@@ -39,7 +39,7 @@ class Trabajo_mantenimiento(models.Model):
         ordering = ['dia_mantenimiento']
 
     def __str__(self):
-        return str(self.id) + '-' + self.dia_mantenimiento + '-' + self.hora_mantenimiento
+        return str(self.id) + '-' + str(self.dia_mantenimiento) 
 
 
 class Externos(models.Model):

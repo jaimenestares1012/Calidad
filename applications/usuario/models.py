@@ -9,7 +9,7 @@ class Usuario(models.Model):
      celular=models.IntegerField('Celular')
      servicio = models.ManyToManyField(
         Servicio,
-        through="Pago",
+        through='Pago',
         blank=True,
     )
 

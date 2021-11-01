@@ -15,7 +15,7 @@ class Servicio(models.Model):
          verbose_name='Servicio'
          verbose_name_plural='Servicios'
      def __str__(self):
-         return  self.nombre_empleado 
+         return  self.servicio
 
 
 

@@ -1,5 +1,5 @@
 from django.db import models
-
+from applications.usuario.models import Usuario
 # Create your models here.
 class Trabajo_mantenimiento(models.Model):
     horas = (
@@ -31,6 +31,9 @@ class Trabajo_mantenimiento(models.Model):
     nro_trabajadores=models.IntegerField("N° trabajadores")
     dia_mantenimiento=models.DateField("Fecha")
     hora_mantenimiento=models.CharField("Hora", max_length=12 ,choices=horas)
+    descripcion=models.CharField("Descripción", max_length=60, blank=True)
+    # usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+
 
 
     class Meta:
@@ -39,7 +42,7 @@ class Trabajo_mantenimiento(models.Model):
         ordering = ['dia_mantenimiento']
 
     def __str__(self):
-        return str(self.id) + '-' + str(self.dia_mantenimiento) 
+        return self.descripcion
 
 
 class Externos(models.Model):
@@ -53,5 +56,5 @@ class Externos(models.Model):
         verbose_name_plural = "Trabajadores externos"
 
     def __str__(self):
-        return str(self.id) + '-' + self.nombre_externo + '-' + self.apellido_externo + '-' + self.trabajo_mantenimiento
+        return str(self.id)
 

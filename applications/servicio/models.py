@@ -4,7 +4,7 @@ class Servicio(models.Model):
      servicio = (
         ('Luz', 'Luz'),
         ('Agua', 'Agua'),
-        ('Mantenimientos', 'Mantenimientos'),
+        ('Mantenimiento', 'Mantenimiento'),
      )
      servicio=models.CharField("servicios", max_length=20, choices=servicio)
      monto= models.IntegerField('Monto')

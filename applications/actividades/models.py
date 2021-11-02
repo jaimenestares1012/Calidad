@@ -5,10 +5,10 @@ from applications.usuario.models import Usuario
 
 class Actividades(models.Model):
      Espacio = (
-        ('1', 'Piscina'),
-        ('2', 'Área parrilla'),
-        ('3', 'Sala star'),
-        ('4', 'Área recreativa'),
+        ('Piscina', 'Piscina'),
+        ('Área parrilla', 'Área parrilla'),
+        ('Sala star', 'Sala star'),
+        ('Área recreativa', 'Área recreativa'),
 
      )
      fecha_reserva = models.DateField("fecha reserva")

@@ -7,14 +7,20 @@
 
 <body>
     <h1 style="text-align: center;">Lista y registro de espacios</h1>
-        <div style="text-align: center;">       
-            <ul class="list-group">
-                        <h5 class="card-title">{{e.servicio}}</h5>
-                        <li class="list-group-item">Psicina</li>
-                        <li class="list-group-item">Area parrilla</li>
-                        <li class="list-group-item">Sala star</li>       
-            </ul>
+        <div>
+            <h2>Lista de los espacios ya reservados</h2>
         </div>
+        {% for e in object_list %}
+        <div class="col-4">
+            <div style="text-align: center;">       
+                <ul class="list-group">
+                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
+                            <li class="list-group-item">{{e.fecha_reserva}}</li>
+                            <li class="list-group-item mb-4">{{e.usuario}}</li>       
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
 </body>
 
 </html>

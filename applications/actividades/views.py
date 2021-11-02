@@ -11,3 +11,9 @@ class prueba(TemplateView):
 class ListaActividades(ListView):
     template_name='actividades/lista_actividades.html'  
     model= Actividades
+       # def get_queryset(self):
+        #     filtro=self.kwargs['url']
+        #     lista=Actividades.objects.filter(
+        #         Actividades__espacio=filtro
+        #     )
+        #     return lista

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">Pago de servicios y facturas</h1>
+    <h1 style="text-align: center;">Hola "{{user}}" Realiza el pago de tus servicios</h1>
     {% for e in object_list %}
     
     <div class="row" style="display:inline;">
@@ -20,7 +20,7 @@
                     <li class="list-group-item">monto: {{e.monto}}</li>
                     <li class="list-group-item">mora: {{e.mora}}</li>
                     <li class="list-group-item">monto a pagar: {{e.monto_total}}</li>
-                    <a href="#" class="btn btn-primary">Pagar</a>
+                    <a href="/servicio/pasarella" class="btn btn-primary">Pagar</a>
                 </div>
             </div>
         </div>
@@ -30,3 +30,4 @@
 </body>
 
 </html>
+

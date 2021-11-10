@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import fields
-from django.utils.html import TRAILING_PUNCTUATION_CHARS
-
+from django.contrib.auth import authenticate
 from .models import User
 
 class UserRegisterForm(forms.ModelForm):
@@ -58,4 +57,13 @@ class LoginForm(forms.Form):
         )
     )
 
-    
+    def clean(self):
+        cleaned_data = super(LoginForm, self).clean()
+        username = self.cleaned_data['username']
+        password = self.cleaned_data['password']
+
+        if not authenticate(username=username, password=password):
+            raise forms.ValidationError(
+                'Los datos de usuario no son correctos')
+
+        return self.cleaned_data

@@ -7,4 +7,4 @@ class prueba(TemplateView):
     template_name='administracion/index.html'
 
 class InicioSesion(TemplateView):
-    template_name = 'administracion/iniciar_sesion.html'
+    template_name = 'administracion/panel.html'

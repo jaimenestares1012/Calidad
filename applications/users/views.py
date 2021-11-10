@@ -1,15 +1,18 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, LoginForm
 from .models import User
 from django.views.generic.edit import FormView
 
 
+
 class UserRegisterView(FormView):
     template_name = 'users/register.html'
-    form_class =UserRegisterForm
+    form_class = UserRegisterForm
     success_url= '/'
 
     def form_valid(self, form) :
@@ -19,3 +22,20 @@ class UserRegisterView(FormView):
             form.cleaned_data['password1'],
         )
         return super(UserRegisterView, self).form_valid(form)
+
+
+
+
+
+class LoginUser(FormView):
+    template_name = 'users/login.html'
+    form_class = LoginForm
+    success_url = reverse_lazy('administracion:iniciar_sesion')
+
+    def form_valid(self, form):
+        user = authenticate(
+            username=form.cleaned_data['username'],
+            password=form.cleaned_data['password']
+        )
+        login(self.request, user)
+        return super(LoginUser, self).form_valid(form)

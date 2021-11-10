@@ -6,9 +6,10 @@ class UserManager(BaseUserManager, models.Manager):
 
 
 
-    def _create_user(self, username, password, is_staff, is_superuser, **extra_fields):
+    def _create_user(self, username,email, password, is_staff, is_superuser, **extra_fields):
         user=self.model(
             username=username,
+            email=email,
             is_staff=is_staff,
             is_superuser=is_superuser,
             **extra_fields
@@ -18,9 +19,9 @@ class UserManager(BaseUserManager, models.Manager):
         user.save(using=self.db)
         return user
     def create_user(self, username, password=None, **extra_fields):
-        return self._create_user(username, password, password, False, False, extra_fields)
+        return self._create_user(username, password, password, False, False, **extra_fields)
 
 
 
-    def create_superuser(self, username, password=None, **extra_fields):
-        return self._create_user(username, password, True, True, **extra_fields)
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        return self._create_user(username,email, password, True, True, **extra_fields)

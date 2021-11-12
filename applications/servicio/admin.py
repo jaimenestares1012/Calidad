@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Servicio
+from .models import Servicio 
 # from applications.usuario.admin import UsuarioPagoInline
 # Register your models here.
 
@@ -12,12 +12,14 @@ class ServicioAdmin(admin.ModelAdmin):
         'id',
         'servicio',
         'monto',
-        'mora',
-        'monto_total',
+        'mes',
+        'estado',
+        'usuario',
+        
     )
 
     list_filter=('servicio',)
-    search_fields=('servicio',)
+    search_fields = ('servicio', 'usuario__nombres')
 
 
 admin.site.register(Servicio, ServicioAdmin)

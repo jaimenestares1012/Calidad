@@ -13,62 +13,75 @@
 </head>
 
 <body>
-<div class="creditCardForm">
-    <div class="heading">
-        <h1>Confirme su Pago</h1>
-    </div>
-    <div class="payment">
-        <form>
-            <div class="form-group owner">
-                <label for="owner">Nombres</label>
-                <input type="text" class="form-control" id="owner">
-            </div>
-            <div class="form-group CVV">
-                <label for="cvv">CVV</label>
-                <input type="text" class="form-control" id="cvv">
-            </div>
-            <div class="form-group" id="card-number-field">
-                <label for="cardNumber">Número tarjeta</label>
-                <input type="text" class="form-control" id="cardNumber">
-            </div>
-            <div class="form-group" id="expiration-date">
-                <label>Fecha de expiración</label>
-                <select>
-                    <option value="01">Enero</option>
-                    <option value="02">Febrero </option>
-                    <option value="03">Marzo</option>
-                    <option value="04">Abril</option>
-                    <option value="05">Mayo</option>
-                    <option value="06">Junio</option>
-                    <option value="07">Julio</option>
-                    <option value="08">Agosto</option>
-                    <option value="09">Septiembre</option>
-                    <option value="10">Octubre</option>
-                    <option value="11">Noviembre</option>
-                    <option value="12">Deciembre</option>
-                </select>
-                <select>
-                    <option value="16"> 2021</option>
-                    <option value="17"> 2022</option>
-                    <option value="18"> 2023</option>
-                    <option value="19"> 2024</option>
-                    <option value="20"> 2025</option>
-                    <option value="21"> 2026</option>
-                </select>
-            </div>
-            <div class="form-group" id="credit_cards">
-                <!-- <img src="/visa.PNG" id="visa">
-                <img src="assets/images/mastercard.jpg" id="mastercard">
-                <img src="assets/images/amex.jpg" id="amex"> -->
-            </div>
-            <div class="form-group" id="pay-now">
-                <button type="submit" class="btn btn-default" id="confirm-purchase">Pagar ahora</button>
-            </div>
+<div class="row">
+    <div class="col-sm-5">
+        <h1 class="creditCardForm">Detalle del pago</h1>
+        <div class="form-group owner">
+            <h3 class="col-4" style="text-align:justify; ">
+                <label>Monto a pagar: </label>
+                <label style="background-color: aquamarine;"> 400 soles</label>
+            </h3>
             
-        </form>
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div class="creditCardForm">
+            <div class="heading">
+                <h1>Confirme su Pago</h1>
+            </div>
+            <div class="payment">
+                <form>
+                    <div class="form-group owner">
+                        <label for="owner">Nombres</label>
+                        <input type="text" class="form-control" id="owner">
+                    </div>
+                    <div class="form-group CVV">
+                        <label for="cvv">cvv</label>
+                        <input type="text" class="form-control" id="cvv">
+                    </div>
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">Número tarjeta</label>
+                        <input type="text" class="form-control" id="cardNumber">
+                    </div>
+                    <div class="form-group" id="expiration-date">
+                        <label>Fecha de expiración</label>
+                        <select>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero </option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Deciembre</option>
+                        </select>
+                        <select>
+                            <option value="16"> 2021</option>
+                            <option value="17"> 2022</option>
+                            <option value="18"> 2023</option>
+                            <option value="19"> 2024</option>
+                            <option value="20"> 2025</option>
+                            <option value="21"> 2026</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="credit_cards">
+                        <!-- <img src="/visa.PNG" id="visa">
+                        <img src="assets/images/mastercard.jpg" id="mastercard">
+                        <img src="assets/images/amex.jpg" id="amex"> -->
+                    </div>
+                    <div class="form-group" id="pay-now">
+                        <button type="submit" class="btn btn-default" id="confirm-purchase">Pagar ahora</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-
     <!-- The HTML for our form will go here -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

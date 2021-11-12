@@ -1,21 +1,17 @@
 from django.contrib import admin
-from .models import Pago, Usuario
+from .models import  Usuario
 # Register your models here.
 
-class UsuarioPagoInline(admin.TabularInline):
-    model = Pago
-    extra = 1
+
 
 
 class UsuarioAdmin(admin.ModelAdmin):
-    inlines = (UsuarioPagoInline,)
     list_display=(
         'id',
         'nro_departamento',
         'dni_usuario',
         'nombres',
         'apellidos',
-        'correo',
         'celular'
     )
 

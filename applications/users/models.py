@@ -9,6 +9,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff=models.BooleanField(default=False)
 
     USERNAME_FIELD='username'
+
+    REQUIRED_FIELDS=['email',]
+
     objects=UserManager()
 
     def get_short_name(self):

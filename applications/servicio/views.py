@@ -1,3 +1,4 @@
+from django.db import models
 from django.views.generic import TemplateView, ListView, CreateView
 
 from applications.servicio.models import Servicio
@@ -13,7 +14,10 @@ class prueba(TemplateView):
 class ListaServicios(LoginRequiredMixin, ListView):
     template_name='servicio/ListaServicios.html'  
     login_url = reverse_lazy('users:user-login')
-    model= Servicio
+    # model= Servicio
+    queryset= Servicio.objects.filter(
+        usuario__nombres="Jaime"
+    )
 
 
 class RealizarPago(LoginRequiredMixin, ListView):

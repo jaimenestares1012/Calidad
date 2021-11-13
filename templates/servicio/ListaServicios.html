@@ -14,6 +14,7 @@
     
     {% for e in object_list %}
     
+    
     <div class="row" style="display:inline;">
         <div class="col-sm-2">
             <div class="card">
@@ -22,7 +23,7 @@
                     <li class="list-group-item">monto: {{e.monto}}</li>
                     <li class="list-group-item">mes: {{e.mes}}</li>
                     <li class="list-group-item">estado: {{e.estado}}</li>
-                    <a href="/servicio/pasarella" class="btn btn-primary" >Pagar este servicio</a>
+                    <a href="/servicio/pasarella/{{e.id}}" class="btn btn-primary" >Pagar este servicio</a>
                 </div>
             </div>
         </div>

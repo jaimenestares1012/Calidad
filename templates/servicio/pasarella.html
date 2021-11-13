@@ -13,12 +13,16 @@
 </head>
 
 <body>
+    
 <div class="row">
     <div class="col-sm-5">
         <h1 class="creditCardForm">Detalle del pago</h1>
         <div class="form-group owner">
             <h3 class="col-4" style="text-align:justify; ">
-                <label>Monto a pagar: </label>
+                <label>Monto a pagar: S/</label>
+                {% for e in pagos %}
+                    {{e.monto}} 
+                {% endfor %}
                 <label style="background-color: aquamarine;"> </label>
             </h3>
             
@@ -41,7 +45,7 @@
                     </div>
                     <div class="form-group" id="card-number-field">
                         <label for="cardNumber">Número tarjeta</label>
-                        <input type="text" class="form-control" id="cardNumber">
+                        <input type="number" class="form-control" id="cardNumber">
                     </div>
                     <div class="form-group" id="expiration-date">
                         <label>Fecha de expiración</label>
@@ -68,20 +72,16 @@
                             <option value="21"> 2026</option>
                         </select>
                     </div>
-                    <div class="form-group" id="credit_cards">
-                        <!-- <img src="/visa.PNG" id="visa">
-                        <img src="assets/images/mastercard.jpg" id="mastercard">
-                        <img src="assets/images/amex.jpg" id="amex"> -->
-                    </div>
                     <div class="form-group" id="pay-now">
                         <button type="submit" class="btn btn-default" id="confirm-purchase">Pagar ahora</button>
                     </div>
-                    
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
     <!-- The HTML for our form will go here -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

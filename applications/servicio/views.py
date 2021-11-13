@@ -15,9 +15,12 @@ class ListaServicios(LoginRequiredMixin, ListView):
     template_name='servicio/ListaServicios.html'  
     login_url = reverse_lazy('users:user-login')
     # model= Servicio
-    queryset= Servicio.objects.filter(
-        usuario__nombres="Jaime"
-    )
+    
+    def get_queryset(self) :
+        lista = Servicio.objects.filter(
+            usuario__users__username= self.request.user
+        )
+        return lista
 
 
 class RealizarPago(LoginRequiredMixin, ListView):

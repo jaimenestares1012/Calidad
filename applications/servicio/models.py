@@ -25,11 +25,26 @@ class Servicio(models.Model):
          ('Diciembre', 'Diciembre'),
 
      )
+     years = (
+         ('2021', '2021'),
+         ('2022', '2022'),
+         ('2023', '2023'),
+         ('2024', '2024'),
+         ('2025', '2025'),
+         ('2026', '2026'),
+         ('2027', '2027'),
+         ('2028', '2028'),
+         ('2029', '2029'),
+         ('2030', '2030'),
+         ('2031', '2031'),
+         ('2032', '2032'),
 
+     )
      servicio=models.CharField("servicios", max_length=20, choices=servicio)
      monto= models.IntegerField('Monto')
      estado = models.CharField("Estado", max_length=20,choices=estado)
      mes = models.CharField("Mes", max_length=20, choices=meses)
+     year=models.CharField("Año", max_length=10, choices=years )
 
      usuario = models.ForeignKey(
          Usuario,

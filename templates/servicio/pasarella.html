@@ -21,22 +21,42 @@
             <div class="col-md-6">
                 <div class="shadow-lg p-3 mb-5 mt-4 bg-body rounded">
                     <div class="col-md-12">
-                        <form  class="row g-3 needs-validations" novalidate>
+                        <form  class="row g-3 needs-validation" novalidate> {% csrf_token %}
                             <div class="col-md-12">
                                 <label for="numero" class="form-label">Numero de tarjeta</label>
                                 <input type="text" name="numero" type="text" class="form-control" maxlength="16" required>
+                                <div class="valid-feedback">
+                                    Campo OK!!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Complete los datos correctamente!
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="nombre" name="nombre" type="text" class="form-control" required>
+                                <div class="valid-feedback">
+                                    Campo OK!!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Complete su nombre!
+                                </div>
                             </div>
+                            
                             <div class="col-md-6">
                                 <label for="apellido" class="form-label">Apellido</label>
                                 <input type="apellido" name="apellido" type="text" class="form-control" required>
+                                <div class="valid-feedback">
+                                    Campo OK!!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Complete su apellido!
+                                </div>
                             </div>
                             <div class="col-md-4 mt-4">
                                 <label  for="fecha" >Mes expiración</label>
                                 <select name="mes" id="mes" class="form-select" required>
+                                    <option selected disabled value="">Seleccione...</option>
                                     <option value="01">Enero</option>
                                     <option value="02">Febrero </option>
                                     <option value="03">Marzo</option>
@@ -50,10 +70,18 @@
                                     <option value="11">Noviembre</option>
                                     <option value="12">Deciembre</option>
                                 </select>
+                                <div class="valid-feedback">
+                                    Campo OK!!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Seleccione el campo!
+                                </div>
+
                             </div>
                             <div class="col-md-4 mt-4">
                                 <label for="fecha">Mes expiración</label>
                                 <select name="year" id="year" class="form-select" required>
+                                    <option selected disabled value="">Seleccione...</option>
                                     <option value="2021"> 2021</option>
                                     <option value="2022"> 2022</option>
                                     <option value="2023"> 2023</option>
@@ -61,10 +89,22 @@
                                     <option value="2025"> 2025</option>
                                     <option value="2026 "> 2026</option>
                                 </select>
+                                <div class="valid-feedback">
+                                    Campo OK!!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Seleccione el campo!
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="cvv" class="form-label">cvv</label>
                                 <input type="cvv" name="cvv" type="text" class="form-control" required maxlength="3">
+                                <div class="valid-feedback">
+                                    Campo OK!!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Complete su código CVV!
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-warning fw-bold">Pagar</button>
                         </form>
@@ -110,14 +150,11 @@
     -->
 
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
             (function () {
                 'use strict'
 
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.querySelectorAll('.needs-validation')
 
-                // Loop over them and prevent submission
                 Array.prototype.slice.call(forms)
                     .forEach(function (form) {
                         form.addEventListener('submit', function (event) {

@@ -9,10 +9,10 @@ class prueba(TemplateView):
     template_name='actividades/prueba.html'
 
 
-class ListaActividades(LoginRequiredMixin, ListView):
-    template_name='actividades/lista_actividades.html' 
-    login_url = reverse_lazy('users:user-login')
-    model= Actividades
+# class ListaActividades(LoginRequiredMixin, ListView):
+#     template_name='actividades/lista_actividades.html' 
+#     login_url = reverse_lazy('users:user-login')
+#     model= Actividades
        # def get_queryset(self):
         #     filtro=self.kwargs['url']
         #     lista=Actividades.objects.filter(
@@ -21,4 +21,14 @@ class ListaActividades(LoginRequiredMixin, ListView):
         #     return lista
 
 
+class ListaActividades(LoginRequiredMixin, ListView):
+    template_name = 'actividades/lista_actividades.html'
+    login_url = reverse_lazy('users:user-login')
+
+    def get_queryset(self):
+        lista = Actividades.objects.filter(
+            usuario__users__username=self.request.user,
+         
+        )
+        return lista
 

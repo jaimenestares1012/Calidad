@@ -6,21 +6,41 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">Lista y registro de espacios</h1>
-        <div>
-            <h2>Lista de los espacios ya reservados</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-6 mt-3">
+            <h1 style="text-align: center;">Lista y registro de espacios</h1>
+            <div>
+                <h3>Lista de los espacios ya reservados</h3>
+            </div>
+            {% for e in object_list %}
+            <div class="col-12">
+                <div style="text-align: center;">
+                    <ul class="list-group">
+                        <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
+                        <li class="list-group-item">{{e.hora_reserva}}</li>
+                        <li class="list-group-item">{{e.estado}}</li>
+                        <li class="list-group-item">{{e.fecha_reserva}}</li>
+                        <li class="list-group-item mb-4">{{e.usuario}}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% for e in object_list %}
-        <div class="col-4">
-            <div style="text-align: center;">       
-                <ul class="list-group">
-                    <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
-                    <li class="list-group-item">{{e.fecha_reserva}}</li>
-                    <li class="list-group-item mb-4">{{e.usuario}}</li>       
-                </ul>
+        <div class="col-6 mt-3  ">
+            <h1 style="text-align: center;">Registro de un nuevo espacio</h1>
+            <div>
+                <h3>Lista de los espacios ya reservados</h3>
             </div>
         </div>
-        {% endfor %}
-</body>
+        
+    </div>
+
 
 </html>
+
+<style>
+    div[class|="col"]{
+        border: 1px solid #ffc107;
+    }
+</style>

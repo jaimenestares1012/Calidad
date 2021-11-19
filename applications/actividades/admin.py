@@ -9,7 +9,9 @@ class ActividadesAdmin(admin.ModelAdmin):
     list_display=(
         'id',
         'fecha_reserva',
+        'hora_reserva',
         'espacio',
+        'estado',
         'usuario',
     )
 

@@ -29,8 +29,8 @@ class ListaActividades(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         lista = Actividades.objects.filter(
-            usuario__users__username=self.request.user,
-         
+            estado="Pendiente",
+
         )
         return lista
 

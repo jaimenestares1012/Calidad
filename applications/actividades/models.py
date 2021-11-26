@@ -43,10 +43,10 @@ class Actividades(models.Model):
          ('Pasado', 'Pasado'),
 
      )
-     fecha_reserva = models.DateField("fecha reserva")
+     fecha_reserva = models.DateField("fecha reserva" )
      hora_reserva = models.CharField("Hora", max_length=10, choices=horas)
      espacio=models.CharField("Espacio", max_length=20, choices=Espacio)
-     estado=models.CharField("Estado" , max_length=10, default="Pendiente")
+     estado=models.CharField("Estado" , max_length=20, default="Pendiente")
      usuario=models.ForeignKey(Usuario , on_delete=models.CASCADE)
 
      class meta:

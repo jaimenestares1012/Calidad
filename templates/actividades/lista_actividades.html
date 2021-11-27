@@ -8,17 +8,26 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-6 mt-3">
+        <div class="col-12 mt-3">
 
         <form method="GET">
            
         </form>
-            <h1 style="text-align: center;">Lista y registro de espacios</h1>
+            <h1 style="text-align: center;">Espacio comunitario</h1>
+            <a href="/actividades/crear-actividades/" class="btn btn-primary">Pagar este servicio</a>
             <div>
                 <h3>Lista de los espacios ya reservados</h3>
+              
             </div>
+            <center> 
+                <a href="/actividades/lista-actividades/Sala star" class="btn btn-primary">Sala star</a>
+                <a href="/actividades/lista-actividades/Piscina" class="btn btn-primary">Piscina</a>
+                <a href="/actividades/lista-actividades/Área parrilla" class="btn btn-primary">Área parrilla</a>
+                <a href="/actividades/lista-actividades/Área recreativa" class="btn btn-primary">Área recreativa</a>
+            </center>
             {% for e in object_list %}
             <div class="col-12">
+                
                 <div style="text-align: center;">
                     <ul class="list-group">
                         <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
@@ -30,11 +39,7 @@
             </div>
             {% endfor %}
         </div>
-        <div class="col-6 mt-3  ">
-            <h1 style="text-align: center;">Registro de un nuevo espacio</h1>
-            <div>
-                <h3>Lista de los espacios ya reservados</h3>
-            </div>
+    
         </div>
         
     </div>

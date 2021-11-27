@@ -7,7 +7,8 @@ class VisitaAdmin(admin.ModelAdmin):
     list_display=(
         'id',
         'fecha_visita',
-        'usuario'
+        'nro_personas',
+        'usuario',
     )
     
     

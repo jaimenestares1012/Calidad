@@ -10,16 +10,25 @@
 
 </head>
 <body>
-<div>
-    <div>
-        <div>
-            <form method="POST">{% csrf_token %}
-                {{form.as_p}}
-                <button type="submit" class="btn btn-warning fw-bold">Pagar</button>
-            </form>
+
+                <div class="container" style="padding:100px 300px;">
+             
+                    <div style="text-align: center;">
+                        <ul class="list-group">
+                            <li class="list-group-item mb-4" style="background-color: bisque; color:red;">
+                                <h2>Formulario reserva</h2>
+                            </li>
+                            <form method="POST">{% csrf_token %}
+                                <h4 align="left">{{form.as_p}}</h4>
+                                
+                            
+                                <button type="submit" class="btn btn-warning fw-bold" >Reservar </button>
+                            </form>
+                        </ul>
+                    </div>
+                    
+                </div>
             
-        </div>
-    </div>
-</div>
+
 </body>
 </html>

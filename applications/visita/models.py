@@ -12,7 +12,7 @@ class Visita(models.Model):
          verbose_name='Visita'
          verbose_name_plural='Visitas'
      def __str__(self):
-         return   str(self.usuario)
+         return  "fecha visita: " + str(self.fecha_visita)
 
 
 class Visitantes(models.Model):

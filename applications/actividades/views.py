@@ -13,17 +13,6 @@ class prueba(TemplateView):
     template_name='actividades/prueba.html'
 
 
-# class ListaActividades(LoginRequiredMixin, ListView):
-#     template_name='actividades/lista_actividades.html' 
-#     login_url = reverse_lazy('users:user-login')
-#     model= Actividades
-       # def get_queryset(self):
-        #     filtro=self.kwargs['url']
-        #     lista=Actividades.objects.filter(
-        #         Actividades__espacio=filtro
-        #     )
-        #     return lista
-
 
 class ListaActividades(LoginRequiredMixin, ListView):
     template_name = 'actividades/lista_actividades.html'
@@ -53,3 +42,5 @@ class ActividadesCreateView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('users:user-login')
     form_class = actividadesForm
     success_url = reverse_lazy('actividades:success')
+
+

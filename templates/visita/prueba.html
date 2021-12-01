@@ -13,11 +13,14 @@
      
         <div>
 
-
+        <h4 class="mt-5">Para registrar una nueva visita presione aquí:
+          <a href="/visita/add/" class="btn btn-success">Registrar Visita</a>
+        </h4>
         {% for e in object_list %}
         <div class="col-12">
 
           <div style="text-align: center;">
+
             <ul class="list-group">
               <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
               <li class="list-group-item">{{e.fecha_visita}}</li>

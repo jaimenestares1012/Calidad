@@ -5,7 +5,8 @@ from applications.usuario.models import Usuario
 
 class Visita(models.Model):
      fecha_visita = models.DateField("fecha de visita")
-     usuario=models.ForeignKey(Usuario , on_delete=models.CASCADE)
+     usuario = models.ForeignKey(
+         Usuario, on_delete=models.CASCADE)
      nro_personas=models.IntegerField("Nro de personas")
 
      class meta:

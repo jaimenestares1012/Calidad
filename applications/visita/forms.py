@@ -53,7 +53,7 @@ class visitantesForm(forms.ModelForm):
             'dni_visita',
             'nombre_visita',
             'apellido_visita',
-            'visita',
+            
 
         )
         # widgets = {
@@ -69,9 +69,12 @@ class visitantesForm(forms.ModelForm):
     #             "ingrese una fecha correcta en su visita ")
     #     return fecha_visita
 
-    # def clean_nro_personas(self):
-    #     nro_personas = self.cleaned_data['nro_personas']
-    #     if nro_personas < 1:
-    #         raise forms.ValidationError(
-    #             "ingrese un número correcto de personas ")
-    #     return nro_personas
+    def clean_dni_visita(self):
+        dni_visita = self.cleaned_data['dni_visita']
+        
+        print(dni_visita, type(str(dni_visita)))
+        if len(str(dni_visita)) != 8:
+            print("dentro del ")
+            raise forms.ValidationError("ingrese un Dni válido ")
+        
+        return dni_visita

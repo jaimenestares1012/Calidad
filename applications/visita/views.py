@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic.edit import FormView
 from applications.visita.models import Visita, Visitantes
 #################### impotamos el modelo para trabjar con ellas en el template
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -26,10 +27,29 @@ class visitaCreateView(LoginRequiredMixin,CreateView):
     success_url = reverse_lazy('visita:lista_visita')
 
 
-class visitantesCreateView(LoginRequiredMixin, CreateView):
+class visitantesCreateView(LoginRequiredMixin, FormView):
     model = Visitantes
     template_name = "visita/add_visitantes.html"
     login_url = reverse_lazy('users:user-login')
     form_class = visitantesForm
     success_url = reverse_lazy('actividades:success')
+
+    def form_valid(self, form):
+        visi1 = self.kwargs['shorname']
+        visi=Visita(
+            id=visi1,
+        )
+
+        dni = form.cleaned_data['dni_visita']
+        nombre = form.cleaned_data['nombre_visita']
+        apellido = form.cleaned_data['apellido_visita']
+        
+        Visitantes.objects.create(
+            dni_visita=dni,
+            nombre_visita=nombre,
+            apellido_visita=apellido,
+            visita=visi
+        )
+        print("*************************estamos en los forma valid")
+        return super(visitantesCreateView, self).form_valid(form)
 

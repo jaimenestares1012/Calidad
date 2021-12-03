@@ -22,10 +22,10 @@
           <div style="text-align: center;">
 
             <ul class="list-group">
-              <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
-              <li class="list-group-item">{{e.fecha_visita}}</li>
-              <li class="list-group-item">{{e.nro_personas}}</li>
-              <li class="list-group-item">{{e.usuario}}</li>
+              <li class="list-group-item" style="background-color: bisque; color:red;"></li>
+              <li class="list-group-item">Fecha: <b>{{e.fecha_visita}}</b></li>
+              <li class="list-group-item">Número de personas: <b>{{e.nro_personas}}</b></li>
+              <li class="list-group-item">usuario: <b>{{e.usuario}}</b> </li>
               <form method="GET"> {% csrf_token %}
                 <a href="/visita/add_visitantes/{{e.id}}" class="btn btn-success">Registrar personas</a>
               </form>

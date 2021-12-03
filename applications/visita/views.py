@@ -12,11 +12,9 @@ class prueba(ListView):
 
 
     def get_queryset(self):
-
-    
-
         lista = Visita.objects.filter(
             usuario__users__username=self.request.user,
+            estado="Pendiente"
         )
         return lista
 
@@ -25,7 +23,7 @@ class visitaCreateView(LoginRequiredMixin,CreateView):
     template_name = "visita/add_visita.html"
     login_url = reverse_lazy('users:user-login')
     form_class= visitaForm
-    success_url = reverse_lazy('visita:add_visitantes')
+    success_url = reverse_lazy('visita:lista_visita')
 
 
 class visitantesCreateView(LoginRequiredMixin, CreateView):

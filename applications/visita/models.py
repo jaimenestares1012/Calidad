@@ -8,6 +8,7 @@ class Visita(models.Model):
      usuario = models.ForeignKey(
          Usuario, on_delete=models.CASCADE)
      nro_personas=models.IntegerField("Nro de personas")
+     estado=models.CharField(max_length=30, default="Pendiente", blank=True)
 
      class meta:
          verbose_name='Visita'

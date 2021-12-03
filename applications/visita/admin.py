@@ -5,6 +5,7 @@ from .models import Visita, Visitantes
 
 class VisitaAdmin(admin.ModelAdmin):
     list_display=(
+        'estado',
         'id',
         'fecha_visita',
         'nro_personas',

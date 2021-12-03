@@ -19,7 +19,29 @@
                                 <h2>Formulario reserva</h2>
                             </li>
                             <form method="POST">{% csrf_token %}
-                                <h4 align="left">{{form.as_p}}</h4>
+                                <h4 align="left">
+                                    {{form.as_p}}
+                                </h4>
+                                <!-- <h4 align="left">
+                                    Fecha de la reseva: {{form.fecha_reserva}}<br>
+                                </h4>
+                                <h4 align="left">
+                                
+                                    Hora de la reserva: {{form.hora_reserva}}<br>
+                                
+                                </h4>
+                                <h4 align="left">
+                                
+                                    
+                                    Espacio: {{form.espacio}}
+                                </h4>
+                                <h4 align="left">
+                                
+                                
+                                    Usuario : {{user}}
+                                </h4> -->
+                               
+                                
                                 
                             
                                 <button type="submit" class="btn btn-warning fw-bold" >  Reservar </button>

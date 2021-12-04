@@ -14,11 +14,14 @@
            
         </form>
             <h1 style="text-align: center;">Espacio comunitario</h1>
-            <h5 class="mt-5" style="text-align: right;">Para reservar un espacio presione aquí: 
+            <h5 class="mt-1" style="text-align: left;">Para reservar un espacio presione aquí: 
                 <a href="/actividades/crear-actividades/" class="btn btn-success">Solicitar una espacio</a> 
             </h5>
+            <h5 class="mt-1" style="text-align: left;">Para tu lista de reservas presiona aquí   :
+                <a href="/actividades/mis-actividades/Sala star" class="btn btn-success">Mis reservas</a>
+            </h5>
             <div>
-                <h3>Lista de los espacios ya reservados</h3>
+                <h3>Lista de los espacios ya reservados total</h3>
               
             </div>
             
@@ -39,6 +42,7 @@
                         <li class="list-group-item">{{e.hora_reserva}}</li>
                         <li class="list-group-item">{{e.estado}}</li>
                         <li class="list-group-item">{{e.fecha_reserva}}</li>
+                        <li class="list-group-item">{{e.usuario}}</li>
                     </ul>
                 </div>
             </div>

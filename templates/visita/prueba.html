@@ -27,7 +27,7 @@
               <li class="list-group-item">usuario: <b>{{e.usuario}}</b> </li>
               <form method="GET"> {% csrf_token %}
                 <a href="/visita/add_visitantes/{{e.id}}" class="btn btn-success">Registrar personas</a>
-                <a href="/visita/add_visitantes/{{e.id}}" class="btn btn-success">Detalles de visita</a>
+                <a href="/visita/list_visitantes/{{e.id}}" class="btn btn-success">Detalles de visita</a>
               </form>
             </ul>
           </div>

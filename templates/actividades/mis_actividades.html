@@ -1,0 +1,63 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3">
+
+                <form method="GET">
+
+                </form>
+                <h1 style="text-align: center;">Espacio comunitario</h1>
+                <h5 class="mt-5" style="text-align: left;">
+                    <a href="/" class="btn btn-success">Ir al inicio</a>
+                    <a href="/actividades/lista-actividades/Sala star" class="btn btn-success">Ir atrás</a>
+                </h5>
+                <h5 class="mt-1" style="text-align: left;">
+                    
+                </h5>
+                <div>
+                    <h3>Lista de tus espacios ya reservados</h3>
+
+                </div>
+
+                <div style="position: relative; text-align: center;">
+
+
+                    <a href="/actividades/mis-actividades/Sala star" class="btn btn-primary">Sala star</a>
+                    <a href="/actividades/mis-actividades/Piscina" class="btn btn-primary">Piscina</a>
+                    <a href="/actividades/mis-actividades/Área parrilla" class="btn btn-primary">Área parrilla</a>
+                    <a href="/actividades/mis-actividades/Área recreativa" class="btn btn-primary">Área recreativa</a>
+                </div>
+                {% for e in object_list %}
+                <div class="col-12">
+
+                    <div style="text-align: center;">
+                        <ul class="list-group">
+                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
+                            <li class="list-group-item">{{e.hora_reserva}}</li>
+                            <li class="list-group-item">{{e.estado}}</li>
+                            <li class="list-group-item">{{e.fecha_reserva}}</li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    </html>
+
+    <style>
+        div[class|="col"] {
+            border: 1px solid #ffc107;
+        }
+    </style>

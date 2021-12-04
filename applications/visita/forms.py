@@ -17,7 +17,6 @@ class visitaForm(forms.ModelForm):
         model = Visita
         fields = (
             'fecha_visita',
-            'usuario',
             'nro_personas'
             
             )
@@ -27,8 +26,6 @@ class visitaForm(forms.ModelForm):
         
 
     def clean_fecha_visita(self):
-        
-
         fecha_actual= datetime.date.today()
         fecha_visita=self.cleaned_data['fecha_visita']
         if fecha_visita<fecha_actual:
@@ -53,8 +50,6 @@ class visitantesForm(forms.ModelForm):
             'dni_visita',
             'nombre_visita',
             'apellido_visita',
-            
-
         )
         # widgets = {
         #     'dni_visita': in
@@ -78,3 +73,5 @@ class visitantesForm(forms.ModelForm):
             raise forms.ValidationError("ingrese un Dni válido ")
         
         return dni_visita
+
+

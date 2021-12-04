@@ -4,7 +4,7 @@ from applications.visita.models import Visita, Visitantes
 #################### impotamos el modelo para trabjar con ellas en el template
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
-
+from applications.usuario.models import Usuario
 from .forms import visitaForm, visitantesForm
 # Create your views here.
 class prueba(ListView):
@@ -19,12 +19,32 @@ class prueba(ListView):
         )
         return lista
 
-class visitaCreateView(LoginRequiredMixin,CreateView):
+
+class visitaCreateView(LoginRequiredMixin, FormView):
     model =Visita
     template_name = "visita/add_visita.html"
     login_url = reverse_lazy('users:user-login')
     form_class= visitaForm
     success_url = reverse_lazy('visita:lista_visita')
+
+    def form_valid(self, form):
+        
+        idUsuario = self.request.user.id
+        usuario = Usuario(
+            id=idUsuario,
+        )
+
+        fecha_visita = form.cleaned_data['fecha_visita']
+        nro_personas = form.cleaned_data['nro_personas']
+
+        Visita.objects.create(
+            fecha_visita=fecha_visita,
+            nro_personas=nro_personas,
+            usuario=usuario
+        )
+        print(idUsuario, self.request.user , fecha_visita, nro_personas)
+        print("*************************estamos en los forma valid")
+        return super(visitaCreateView, self).form_valid(form)
 
 
 class visitantesCreateView(LoginRequiredMixin, FormView):
@@ -32,7 +52,7 @@ class visitantesCreateView(LoginRequiredMixin, FormView):
     template_name = "visita/add_visitantes.html"
     login_url = reverse_lazy('users:user-login')
     form_class = visitantesForm
-    success_url = reverse_lazy('actividades:success')
+    success_url = reverse_lazy('visita:lista_visita')
 
     def form_valid(self, form):
         visi1 = self.kwargs['shorname']
@@ -53,3 +73,15 @@ class visitantesCreateView(LoginRequiredMixin, FormView):
         print("*************************estamos en los forma valid")
         return super(visitantesCreateView, self).form_valid(form)
 
+
+class listVisitantes(ListView):
+    template_name = 'visita/lista-visitantes.html'
+    model = Visitantes
+
+    def get_queryset(self):
+        visi1 = self.kwargs['shorname']
+        lista = Visitantes.objects.filter(
+            # usuario__users__username=self.request.user,
+            visita=visi1
+        )
+        return lista

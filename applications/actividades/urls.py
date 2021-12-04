@@ -10,5 +10,7 @@ urlpatterns = [
          views.ListaActividades.as_view(),name="lista-actividades"),
     path('crear-actividades/', views.ActividadesCreateView.as_view()),
     path('success/', views.Success.as_view() , name="success"),
+    path('mis-actividades/<shorname>',
+         views.ListaActividadesPropias.as_view(), name="mis-actividades"),
     
 ]

@@ -42,8 +42,8 @@ class visitaCreateView(LoginRequiredMixin, FormView):
             nro_personas=nro_personas,
             usuario=usuario
         )
-        print(idUsuario, self.request.user , fecha_visita, nro_personas)
-        print("*************************estamos en los forma valid")
+        print("tener cuidado de un posible error ",idUsuario, self.request.user , fecha_visita, nro_personas)
+        print("*************************estamos en los forma valid***************************")
         return super(visitaCreateView, self).form_valid(form)
 
 

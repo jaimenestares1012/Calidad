@@ -38,7 +38,7 @@ class ActividadesCreateView(LoginRequiredMixin, FormView):
     template_name = "actividades/create_actividades.html"
     login_url = reverse_lazy('users:user-login')
     form_class = actividadesForm
-    success_url = reverse_lazy('actividades:success')
+    success_url = '/actividades/lista-actividades/Sala star'
 
 
     def form_valid(self, form):

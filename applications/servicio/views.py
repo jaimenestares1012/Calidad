@@ -38,3 +38,15 @@ class RealizarPago(LoginRequiredMixin, ListView):
             id=area
         )
         return lista
+
+
+class ListaRecibos(LoginRequiredMixin, ListView):
+    template_name = 'servicio/ListaRecibos.html'
+    login_url = reverse_lazy('users:user-login')
+
+    def get_queryset(self):
+        lista = Servicio.objects.filter(
+            usuario__users__username=self.request.user,
+            estado="Pagado"
+        )
+        return lista

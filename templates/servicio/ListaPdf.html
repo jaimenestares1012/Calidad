@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+</head>
+<body>
+    <div ">
+        {% for e in servicios %}
+        <h1 style="text-align: center;">Recibo pagado</h1>
+        <h4>Servicio:{{e.servicio}}  </h4>
+        <h4>usuario : {{e.usuario}}</h4>
+        <h4>Estado : {{e.estado}}</h4>
+        <h4>Monto : {{e.monto}} soles</h4>
+
+
+
+        <h2 style="text-align: center;">Tabla resumen</h2>
+        <table border="1">
+    
+            <head>
+                <th> servicios</th>
+                <th> Mes</th>
+                <th> Monto</th>
+                <th> estado</th>
+            </head>
+            <tbody>
+                
+                <tr>    
+                    
+                    <td class="list-group-item">{{e.servicio}}</td>
+                    <td class="list-group-item">{{e.mes}}</td>
+                    <td class="list-group-item">{{e.monto}}</td>
+                    <td class="list-group-item">{{e.estado}}</td>
+                </tr>
+               
+            </tbody>
+    
+        </table>
+        {% endfor %}
+    </div>
+</body>
+</html>

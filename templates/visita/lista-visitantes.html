@@ -16,7 +16,7 @@
                   
                     <a href="/" class="btn btn-success">Ir al inicio</a>
                     <a href="/visita/prueba/" class="btn btn-success">Regresar al atras</a>
-
+                    
                     {% for e in object_list %}
                     <div class="col-12">
                         <div style="text-align: center;">
@@ -25,6 +25,7 @@
                                 <li class="list-group-item">Dni: <b>{{e.dni_visita}}</b></li>
                                 <li class="list-group-item">Nombre: <b>{{e.nombre_visita}}</b> </li>
                                 <li class="list-group-item">Apellido: <b>{{e.apellido_visita}}</b> </li>
+                                {{e.visita}}
                             </ul>
                         </div>
                     </div>

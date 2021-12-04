@@ -7,8 +7,11 @@ from django.urls import reverse_lazy, reverse
 from applications.usuario.models import Usuario
 from .forms import visitaForm, visitantesForm
 # Create your views here.
-class prueba(ListView):
+
+
+class prueba(LoginRequiredMixin, ListView):
     template_name='visita/prueba.html'
+    login_url = reverse_lazy('users:user-login')
     model=Visita
 
 
@@ -74,14 +77,15 @@ class visitantesCreateView(LoginRequiredMixin, FormView):
         return super(visitantesCreateView, self).form_valid(form)
 
 
-class listVisitantes(ListView):
+class listVisitantes(LoginRequiredMixin, ListView):
     template_name = 'visita/lista-visitantes.html'
     model = Visitantes
-
+    login_url = reverse_lazy('users:user-login')
+    ###alarma de inserguridad, puede tener errores
     def get_queryset(self):
         visi1 = self.kwargs['shorname']
         lista = Visitantes.objects.filter(
-            # usuario__users__username=self.request.user,
+            visita__usuario__users__username=self.request.user,
             visita=visi1
         )
         return lista

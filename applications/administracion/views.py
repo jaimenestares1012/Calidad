@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin

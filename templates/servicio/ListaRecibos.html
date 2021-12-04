@@ -35,10 +35,10 @@
                             <li class="list-group-item" style="background-color: bisque; color:red;">{{e.servicio}}</li>
                             <li class="list-group-item">Mes: <b>{{e.mes}}</b></li>
                             <li class="list-group-item">Monto a pagar: <b>{{e.monto}}</b></li>
-                            <li class="list-group-item">Estado: <b>{{e.monto}}</b></li>
+                            <li class="list-group-item">Estado: <b>{{e.estado}}</b></li>
 
                         </ul>
-                        <a href="/servicio/pasarella/{{e.id}}" class="btn btn-primary">Imprimir recibo</a>
+                        <a href="/servicio/lista_pdf2/{{e.id}}" class="btn btn-primary">Imprimir recibo</a>
                     </div>
                 </div>
                 {% endfor %}

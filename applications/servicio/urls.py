@@ -8,4 +8,5 @@ urlpatterns = [
     path('lista_servicios/', views.ListaServicios.as_view(), name="lista-servicios"),
     path('pasarella/<int:id>/', views.RealizarPago.as_view(), name="pasarella"),
     path('lista_recibos/', views.ListaRecibos.as_view(), name="lista-recibos"),
+    path('lista_pdf2/<shorname>', views.ListPdf2.as_view(), name="lista-pdf"),
 ]

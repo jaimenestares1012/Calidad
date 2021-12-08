@@ -1,7 +1,7 @@
 from django.db import models
 from applications.usuario.models import Usuario
 # Create your models here.
-class Trabajo_mantenimiento(models.Model):
+class trabajo_mantenimiento(models.Model):
     horas = (
         ('5', '05 am'),
         ('6', '06 am'),

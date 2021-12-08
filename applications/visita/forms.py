@@ -39,7 +39,7 @@ class visita_form(forms.ModelForm):
         return nro_personas 
 
 
-class visitantesForm(forms.ModelForm):
+class visitantes_form(forms.ModelForm):
     """Form definition for visita."""
 
     class Meta:

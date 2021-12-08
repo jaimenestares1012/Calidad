@@ -5,7 +5,7 @@ from applications.visita.models import Visita, Visitantes
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from applications.usuario.models import Usuario
-from .forms import visita_form, visitantesForm
+from .forms import visita_form, visitantes_form
 # Create your views here.
 
 variable='users:iniciar-sesion'
@@ -55,7 +55,7 @@ class visitantes_view(LoginRequiredMixin, FormView):
     model = Visitantes
     template_name = "visita/add_visitantes.html"
     login_url = reverse_lazy(variable)
-    form_class = visitantesForm
+    form_class = visitantes_form
     success_url = reverse_lazy('visita:lista_visita')
 
     def form_valid(self, form):

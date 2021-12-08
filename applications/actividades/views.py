@@ -6,7 +6,7 @@ from django.views.generic.edit import FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 
-from .forms import ACTIVIDADES_FORM
+from .forms import my_actividades_form
 
 from applications.usuario.models import Usuario
 # Create your views here.
@@ -38,7 +38,7 @@ class ActividadesCreateView(LoginRequiredMixin, FormView):
     model = Actividades
     template_name = "actividades/create_actividades.html"
     login_url = reverse_lazy(variable)
-    form_class = ACTIVIDADES_FORM
+    form_class = my_actividades_form
     success_url = '/actividades/lista-actividades/Sala star'
 
 

@@ -19,9 +19,6 @@ class my_actividades_form(forms.ModelForm):
             'fecha_reserva',
             'hora_reserva',
             'espacio',
-            
-
-
         )
         widgets = {
             'fecha_reserva': DateInput

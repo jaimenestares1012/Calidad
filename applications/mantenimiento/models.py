@@ -49,7 +49,7 @@ class Externos(models.Model):
     dni_externo = models.IntegerField("Dni externo")
     nombre_externo = models.CharField("nombre", max_length=50)
     apellido_externo = models.CharField("apellido", max_length=50)
-    trabajo_mantenimiento = models.ForeignKey(Trabajo_mantenimiento, on_delete=models.CASCADE)
+    trabajo_mantenimientos = models.ForeignKey(trabajo_mantenimiento, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Externos'

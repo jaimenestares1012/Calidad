@@ -4,7 +4,7 @@ from applications.usuario.models import Usuario
 
 
 class Actividades(models.Model):
-     Espacio = (
+     EspacioLista = (
         ('Piscina', 'Piscina'),
         ('Área parrilla', 'Área parrilla'),
         ('Sala star', 'Sala star'),
@@ -45,7 +45,7 @@ class Actividades(models.Model):
      )
      fecha_reserva = models.DateField("fecha reserva" )
      hora_reserva = models.CharField("Hora", max_length=10, choices=horas)
-     espacio=models.CharField("Espacio", max_length=20, choices=Espacio)
+     espacio = models.CharField("Espacio", max_length=20, choices=EspacioLista)
      estado=models.CharField("Estado" , max_length=20, default="Pendiente")
      usuario=models.ForeignKey(Usuario , on_delete=models.CASCADE)
 

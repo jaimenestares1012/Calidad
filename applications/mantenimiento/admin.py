@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Externos, Trabajo_mantenimiento
+from .models import Externos, trabajo_mantenimiento
 # Register your models here.
 
 
@@ -19,11 +19,11 @@ class ExternoAdmin(admin.ModelAdmin):
         'dni_externo',
         'nombre_externo',
         'apellido_externo',
-        'trabajo_mantenimiento',
+        'trabajo_mantenimientos',
     )
 
     search_fields=('nombre_mantenimiento',)
 
 
-admin.site.register(Trabajo_mantenimiento, TrabajoMantenimientoAdmin)
+admin.site.register(trabajo_mantenimiento, TrabajoMantenimientoAdmin)
 admin.site.register(Externos, ExternoAdmin)

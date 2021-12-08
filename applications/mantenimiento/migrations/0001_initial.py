@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Trabajo_mantenimiento',
+            name='trabajo_mantenimiento',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('nro_trabajadores', models.IntegerField(verbose_name='N° trabajadores')),

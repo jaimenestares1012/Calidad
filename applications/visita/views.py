@@ -23,7 +23,7 @@ class prueba(LoginRequiredMixin, ListView):
         return lista
 
 
-class visitaCreateView(LoginRequiredMixin, FormView):
+class visita_view(LoginRequiredMixin, FormView):
     model =Visita
     template_name = "visita/add_visita.html"
     login_url = reverse_lazy('users:user-login')
@@ -32,9 +32,9 @@ class visitaCreateView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         
-        idUsuario = self.request.user.id
+        id_usuario = self.request.user.id
         usuario = Usuario(
-            id=idUsuario,
+            id=id_usuario,
         )
 
         fecha_visita = form.cleaned_data['fecha_visita']
@@ -45,12 +45,12 @@ class visitaCreateView(LoginRequiredMixin, FormView):
             nro_personas=nro_personas,
             usuario=usuario
         )
-        print("tener cuidado de un posible error ",idUsuario, self.request.user , fecha_visita, nro_personas)
+        print("tener cuidado de un posible error ",id_usuario, self.request.user , fecha_visita, nro_personas)
         print("*************************estamos en los forma valid***************************")
-        return super(visitaCreateView, self).form_valid(form)
+        return super(visita_view, self).form_valid(form)
 
 
-class visitantesCreateView(LoginRequiredMixin, FormView):
+class visitantes_view(LoginRequiredMixin, FormView):
     model = Visitantes
     template_name = "visita/add_visitantes.html"
     login_url = reverse_lazy('users:user-login')
@@ -74,10 +74,10 @@ class visitantesCreateView(LoginRequiredMixin, FormView):
             visita=visi
         )
         print("*************************estamos en los forma valid")
-        return super(visitantesCreateView, self).form_valid(form)
+        return super(visitantes_view, self).form_valid(form)
 
 
-class listVisitantes(LoginRequiredMixin, ListView):
+class list_visitantes(LoginRequiredMixin, ListView):
     template_name = 'visita/lista-visitantes.html'
     model = Visitantes
     login_url = reverse_lazy('users:user-login')

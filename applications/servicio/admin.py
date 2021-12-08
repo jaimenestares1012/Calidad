@@ -7,7 +7,7 @@ from .models import Servicio
 
 
 class ServicioAdmin(admin.ModelAdmin):
-    # inlines = (UsuarioPagoInline,)
+    
     list_display=(
         'id',
         'servicio',

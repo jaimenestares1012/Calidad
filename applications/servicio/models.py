@@ -60,22 +60,3 @@ class Servicio(models.Model):
 
 
 
-# class Pago(models.Model):
-#     servicio = models.ForeignKey(
-#         Servicio, 
-#         on_delete=models.CASCADE,
-#         blank=True, null=True
-#     )
-#     usuario = models.ForeignKey(
-#         Usuario, 
-#         on_delete=models.CASCADE,
-#         blank=True, null=True
-#     )
-#     fecha = models.DateField( 'Fecha')
-#     class meta:
-#         db_table = 'UsuarioPago'
-#         verbose_name = 'Pago'
-#         verbose_name_plural = 'Pagos'
-
-#     def __str__(self):
-#         return str(self.id) 

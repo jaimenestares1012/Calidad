@@ -5,7 +5,7 @@ from .models import User
 
 class UserRegisterForm(forms.ModelForm):
     password1=forms.CharField(
-        label='Contraseña',
+       
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -14,7 +14,7 @@ class UserRegisterForm(forms.ModelForm):
         )
     )
     password2=forms.CharField(
-        label='Contraseña',
+       
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -39,16 +39,16 @@ class UserRegisterForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        label='username',
+        
         required=True,
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'usernmae',
+                'placeholder': 'username',
             }
         )
     )
     password = forms.CharField(
-        label='Contraseña',
+        
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -58,7 +58,7 @@ class LoginForm(forms.Form):
     )
 
     def clean(self):
-        cleaned_data = super(LoginForm, self).clean()
+        cleaned_data = super(LoginForm, self).clean() 
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
 
@@ -72,7 +72,7 @@ class LoginForm(forms.Form):
 class UpdatePasswordForm(forms.Form):
 
     password1 = forms.CharField(
-        label='Contraseña',
+       
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -81,7 +81,7 @@ class UpdatePasswordForm(forms.Form):
         )
     )
     password2 = forms.CharField(
-        label='Contraseña',
+        
         required=True,
         widget=forms.PasswordInput(
             attrs={

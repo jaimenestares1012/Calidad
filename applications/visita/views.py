@@ -8,10 +8,11 @@ from applications.usuario.models import Usuario
 from .forms import visitaForm, visitantesForm
 # Create your views here.
 
+variable='users:iniciar-sesion'
 
 class prueba(LoginRequiredMixin, ListView):
     template_name='visita/prueba.html'
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
     model=Visita
 
 
@@ -26,7 +27,7 @@ class prueba(LoginRequiredMixin, ListView):
 class visita_view(LoginRequiredMixin, FormView):
     model =Visita
     template_name = "visita/add_visita.html"
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
     form_class= visitaForm
     success_url = reverse_lazy('visita:lista_visita')
 
@@ -53,7 +54,7 @@ class visita_view(LoginRequiredMixin, FormView):
 class visitantes_view(LoginRequiredMixin, FormView):
     model = Visitantes
     template_name = "visita/add_visitantes.html"
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
     form_class = visitantesForm
     success_url = reverse_lazy('visita:lista_visita')
 
@@ -80,7 +81,7 @@ class visitantes_view(LoginRequiredMixin, FormView):
 class list_visitantes(LoginRequiredMixin, ListView):
     template_name = 'visita/lista-visitantes.html'
     model = Visitantes
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
     ###alarma de inserguridad, puede tener errores
     def get_queryset(self):
         visi1 = self.kwargs['shorname']

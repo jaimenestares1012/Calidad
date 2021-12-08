@@ -10,6 +10,7 @@ from .forms import actividadesForm
 
 from applications.usuario.models import Usuario
 # Create your views here.
+variable = 'users:iniciar-sesion'
 class prueba(TemplateView):
     template_name='actividades/prueba.html'
 
@@ -17,7 +18,7 @@ class prueba(TemplateView):
 
 class ListaActividades(LoginRequiredMixin, ListView):
     template_name = 'actividades/lista_actividades.html'
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
     
     def get_queryset(self):
         
@@ -30,13 +31,13 @@ class ListaActividades(LoginRequiredMixin, ListView):
         return lista
 class Success(LoginRequiredMixin, TemplateView):
     template_name = "actividades/success.html"
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
 
 
 class ActividadesCreateView(LoginRequiredMixin, FormView):
     model = Actividades
     template_name = "actividades/create_actividades.html"
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
     form_class = actividadesForm
     success_url = '/actividades/lista-actividades/Sala star'
 
@@ -63,7 +64,7 @@ class ActividadesCreateView(LoginRequiredMixin, FormView):
 
 class ListaActividadesPropias(LoginRequiredMixin, ListView):
     template_name = 'actividades/mis_actividades.html'
-    login_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy(variable)
 
     def get_queryset(self):
 

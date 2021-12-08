@@ -13,6 +13,7 @@ from django.views.generic import (
 )
 from django.views.generic.edit import FormView
 
+variable = 'users:iniciar-sesion'
 
 
 class UserRegisterView(FormView):
@@ -52,7 +53,7 @@ class LogoutView(View):
         logout(request)
         return HttpResponseRedirect(
             reverse(
-                'users:iniciar-sesion'
+                variable
             )
         )
 
@@ -60,8 +61,8 @@ class LogoutView(View):
 class UpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/update.html'
     form_class = UpdatePasswordForm
-    success_url = reverse_lazy('users:iniciar-sesion')
-    login_url = reverse_lazy('users:iniciar-sesion')
+    success_url = reverse_lazy(variable)
+    login_url = reverse_lazy(variable)
 
     def form_valid(self, form):
         usuario = self.request.user

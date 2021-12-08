@@ -37,12 +37,7 @@ class Actividades(models.Model):
          ('3 am', '03 am'),
          ('4 am', '04 am'),
      )
-     Estado = (
-         ('Pendiente', 'Pendiente'),
-         ('Activo', 'Activo'),
-         ('Pasado', 'Pasado'),
-
-     )
+     
      fecha_reserva = models.DateField("fecha reserva" )
      hora_reserva = models.CharField("Hora", max_length=10, choices=horas)
      espacio = models.CharField("Espacio", max_length=20, choices=EspacioLista)

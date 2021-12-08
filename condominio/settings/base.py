@@ -31,10 +31,10 @@ def get_secret(secret_name, secrets=secret):
     try: 
         return secrets[secret_name]
     except:
-
+        print("no variable")
         msg="la variable %s no existe" %secret_name
         raise ImproperlyConfigured(msg)
-        return "sss"
+        
 
 
 SECRET_KEY = get_secret('SECRET_KEY')

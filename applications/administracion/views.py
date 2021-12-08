@@ -13,7 +13,7 @@ class prueba(TemplateView):
 
 class InicioSesion(LoginRequiredMixin, TemplateView):
     template_name = 'administracion/panel.html'
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
 
 class FechaMixin(object):
 

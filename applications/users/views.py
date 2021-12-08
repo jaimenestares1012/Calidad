@@ -52,7 +52,7 @@ class LogoutView(View):
         logout(request)
         return HttpResponseRedirect(
             reverse(
-                'users:user-login'
+                'users:iniciar-sesion'
             )
         )
 
@@ -60,8 +60,8 @@ class LogoutView(View):
 class UpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/update.html'
     form_class = UpdatePasswordForm
-    success_url = reverse_lazy('users:user-login')
-    login_url = reverse_lazy('users:user-login')
+    success_url = reverse_lazy('users:iniciar-sesion')
+    login_url = reverse_lazy('users:iniciar-sesion')
 
     def form_valid(self, form):
         usuario = self.request.user

@@ -11,7 +11,7 @@ from .forms import visitaForm, visitantesForm
 
 class prueba(LoginRequiredMixin, ListView):
     template_name='visita/prueba.html'
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
     model=Visita
 
 
@@ -26,7 +26,7 @@ class prueba(LoginRequiredMixin, ListView):
 class visita_view(LoginRequiredMixin, FormView):
     model =Visita
     template_name = "visita/add_visita.html"
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
     form_class= visitaForm
     success_url = reverse_lazy('visita:lista_visita')
 
@@ -53,7 +53,7 @@ class visita_view(LoginRequiredMixin, FormView):
 class visitantes_view(LoginRequiredMixin, FormView):
     model = Visitantes
     template_name = "visita/add_visitantes.html"
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
     form_class = visitantesForm
     success_url = reverse_lazy('visita:lista_visita')
 
@@ -80,7 +80,7 @@ class visitantes_view(LoginRequiredMixin, FormView):
 class list_visitantes(LoginRequiredMixin, ListView):
     template_name = 'visita/lista-visitantes.html'
     model = Visitantes
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
     ###alarma de inserguridad, puede tener errores
     def get_queryset(self):
         visi1 = self.kwargs['shorname']

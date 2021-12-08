@@ -18,7 +18,7 @@ class prueba(TemplateView):
 
 class ListaServicios(LoginRequiredMixin, ListView):
     template_name = 'servicio/ListaServicios.html'
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
 
     def get_queryset(self):
         lista = Servicio.objects.filter(
@@ -30,7 +30,7 @@ class ListaServicios(LoginRequiredMixin, ListView):
 
 class RealizarPago(LoginRequiredMixin, ListView):
     template_name = 'servicio/pasarella.html'
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
     context_object_name = 'pagos'
 
     def get_queryset(self):
@@ -43,7 +43,7 @@ class RealizarPago(LoginRequiredMixin, ListView):
 
 class ListaRecibos(LoginRequiredMixin, ListView):
     template_name = 'servicio/ListaRecibos.html'
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
 
     def get_queryset(self):
 
@@ -55,7 +55,7 @@ class ListaRecibos(LoginRequiredMixin, ListView):
         return lista
 
 class ListPdf2(LoginRequiredMixin,View):
-    login_url = reverse_lazy('users:user-login')
+    login_url = reverse_lazy('users:iniciar-sesion')
     def get(self, request, *args, **kwargs):
         area = self.kwargs['shorname']
         servicio = Servicio.objects.filter(

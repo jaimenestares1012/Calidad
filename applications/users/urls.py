@@ -15,7 +15,7 @@ urlpatterns = [
     path(
         'login/',
         views.LoginUser.as_view(),
-        name='user-login',
+        name='iniciar-sesion',
     ),
     path(
         'logout/',

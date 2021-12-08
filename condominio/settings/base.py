@@ -31,12 +31,14 @@ def get_secret(secret_name, secrets=secret):
     try: 
         return secrets[secret_name]
     except:
+
         msg="la variable %s no existe" %secret_name
         raise ImproperlyConfigured(msg)
+        return "sss"
 
 
 SECRET_KEY = get_secret('SECRET_KEY')
-# SECRET_KEY = 'django-insecure-5+yu#n*lohq#j5q@_-5l!^7c#8p%e9ded8@4*!h#$%#i2pen1j'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 

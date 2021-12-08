@@ -10,10 +10,9 @@ class DateInput(forms.DateInput):
 
 
 class my_actividades_form(forms.ModelForm):
-    """Form definition for visita."""
+
 
     class Meta:
-        """Meta definition for visitaform."""
 
         model = Actividades
         fields = (

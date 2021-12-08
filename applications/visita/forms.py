@@ -8,7 +8,7 @@ class DateInput(forms.DateInput):
     input_type='date'
 
 
-class visitaForm(forms.ModelForm):
+class visita_form(forms.ModelForm):
     """Form definition for visita."""
 
     class Meta:

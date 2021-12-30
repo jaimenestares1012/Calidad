@@ -27,11 +27,13 @@ class visita_form(forms.ModelForm):
 
     def clean_fecha_visita(self):
         fecha_actual= datetime.date.today()
-        # fecha_actualconhora=datetime.now().time()
-        feckddk=datetime.time(23, 0, 0)
-        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44", feckddk)
-        # print("#################################################################################################3",fecha_actualconhora)
+        fecha_actualconhora=datetime.datetime.now()
+        hora=fecha_actualconhora.hour
+        feckddk=datetime.time(22, 0, 0)
+        horamaxima=feckddk.hour
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44", horamaxima, hora)
         
+       
         fecha_visita=self.cleaned_data['fecha_visita']
         fecha1 = datetime.date(2023, 1, 1)
         if fecha_visita>fecha1:
@@ -39,12 +41,21 @@ class visita_form(forms.ModelForm):
                 "ingrese una fecha más proxima, fecha máxima: 2023-01-01")
         if fecha_visita<fecha_actual:
             raise forms.ValidationError("ingrese una fecha correcta en su visita ")
+
+        if fecha_actual==fecha_visita:
+            print("la fecha a reservar es hoy")
+            if hora > horamaxima:
+                raise forms.ValidationError(
+                    "Muy tarde para registrar una visita, elija otro día")
+            
         return fecha_visita
 
     def clean_nro_personas(self):
         nro_personas=self.cleaned_data['nro_personas']
         if nro_personas<1:
             raise forms.ValidationError("ingrese un número correcto de personas ")
+        if nro_personas>25:
+            raise forms.ValidationError("Ingrese un número inferior de personas, máximo 25 ")
         return nro_personas 
 
 

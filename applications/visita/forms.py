@@ -1,5 +1,5 @@
 from django import forms
-import datetime
+import datetime, time
 
 from django.forms import widgets
 from .models import Visita, Visitantes
@@ -27,7 +27,16 @@ class visita_form(forms.ModelForm):
 
     def clean_fecha_visita(self):
         fecha_actual= datetime.date.today()
+        # fecha_actualconhora=datetime.now().time()
+        feckddk=datetime.time(23, 0, 0)
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44", feckddk)
+        # print("#################################################################################################3",fecha_actualconhora)
+        
         fecha_visita=self.cleaned_data['fecha_visita']
+        fecha1 = datetime.date(2023, 1, 1)
+        if fecha_visita>fecha1:
+            raise forms.ValidationError(
+                "ingrese una fecha más proxima, fecha máxima: 2023-01-01")
         if fecha_visita<fecha_actual:
             raise forms.ValidationError("ingrese una fecha correcta en su visita ")
         return fecha_visita

@@ -24,6 +24,7 @@
             <ul class="list-group">
               <li class="list-group-item" style="background-color: bisque; color:red;"></li>
               <li class="list-group-item">Fecha: {{e.fecha_visita}}</li>
+              <li class="list-group-item">Nro personas: {{e.nro_personas}}</li>
               <li class="list-group-item">usuario: {{e.usuario}} </li>
               <form method="GET"> {% csrf_token %}
                 <a href="/visita/add_visitantes/{{e.id}}" class="btn btn-success">Registrar personas</a>

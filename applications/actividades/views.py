@@ -40,7 +40,7 @@ class ActividadesCreateView(LoginRequiredMixin, FormView):
     login_url = reverse_lazy(variable)
     form_class = my_actividades_form
     success_url = '/actividades/lista-actividades/Sala star'
-
+    
 
     def form_valid(self, form):
         visi1 = self.request.user.id
@@ -51,7 +51,7 @@ class ActividadesCreateView(LoginRequiredMixin, FormView):
         fecha_reserva = form.cleaned_data['fecha_reserva']
         hora_reserva = form.cleaned_data['hora_reserva']
         espacio = form.cleaned_data['espacio']
-        
+        print("esta es la fecha de reserva" , fecha_reserva)
         Actividades.objects.create(
             fecha_reserva=fecha_reserva,
             hora_reserva=hora_reserva,

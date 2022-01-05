@@ -15,20 +15,26 @@ class prueba(TemplateView):
     template_name='actividades/prueba.html'
 
 
-
+#lisya de las actividesde que se tienen
 class ListaActividades(LoginRequiredMixin, ListView):
+    #el tamplate name se guarda en la carpeta actividades
     template_name = 'actividades/lista_actividades.html'
     login_url = reverse_lazy(variable)
     
+    #definimos un queryset
     def get_queryset(self):
-        
+        #el shorname que viene como parametro, es captdado por la self.kwargs
         espacio=self.kwargs['shorname']
         
+        #la lista de actividades, se filtra por, su estado, y lo que viene como tipo, por parte del front
         lista = Actividades.objects.filter(
             estado="Pendiente",
             espacio=espacio,
         )
         return lista
+
+
+#la clase succes se encarga del mensaje luego de finalizar una acción
 class Success(LoginRequiredMixin, TemplateView):
     template_name = "actividades/success.html"
     login_url = reverse_lazy(variable)

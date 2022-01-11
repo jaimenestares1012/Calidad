@@ -1,9 +1,11 @@
+from django.db import models
 from django.views.generic import TemplateView, ListView, CreateView
 from applications.mantenimiento.models import trabajo_mantenimiento, Externos
 from django.urls import reverse_lazy, reverse
+from django.views.generic.edit import FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 #################### impotamos el modelo para trabjar con ellas en el template
-# from .forms import mantenimiento_form
+from .forms import my_mantenimiento_form
 from applications.usuario.models import Usuario
 # Create your views here.
 class prueba(TemplateView):
@@ -16,38 +18,59 @@ class ListaMantenimiento(LoginRequiredMixin, ListView):
 
     
     def get_queryset(self):
-        # visi1 = self.kwargs['shorname']
-        # lista = Visitantes.objects.filter(
-        #     visita__usuario__users__username=self.request.user,
-        #     visita=visi1
-        # )
-        return trabajo_mantenimiento
+        visi1 = self.kwargs['shorname']
+        lista = trabajo_mantenimiento.objects.filter(
+            usuario__users__username=self.request.user,
+        )
+        return lista
 
-# class visita_view(LoginRequiredMixin, FormView):
-#     model =trabajo_mantenimiento
-#     template_name = "mantenimiento/add_mantenimiento.html"
-#     login_url = reverse_lazy("users:iniciar-sesion")
-#     form_class= mantenimiento_form
-#     success_url = reverse_lazy('visita:lista_visita')
-
-#     def form_valid(self, form):
+class mantenimiento_view(LoginRequiredMixin, FormView):
+    model =trabajo_mantenimiento
+    template_name = "mantenimiento/add_mantenimiento.html"
+    login_url = reverse_lazy("users:iniciar-sesion")
+    form_class= my_mantenimiento_form
+    success_url = '/mantenimiento/lista-mantenimiento/Usuarios'
+    def form_valid(self, form):
         
-#         id_usuario = self.request.user.id
-#         usuario = Usuario(
-#             id=id_usuario,
-#         )
+        id_usuario = self.request.user.id
+        usuario = Usuario(
+            id=id_usuario,
+        )
+        
+        nro_trabajadores = form.cleaned_data['nro_trabajadores']
+        dia_mantenimiento = form.cleaned_data['dia_mantenimiento']
+        hora_mantenimiento = form.cleaned_data['hora_mantenimiento']
+        descripcion = form.cleaned_data['descripcion']
+        nro_departamento = form.cleaned_data['nro_departamento']
+        
+        
+        trabajo_mantenimiento.objects.create(
+            nro_trabajadores=nro_trabajadores,
+            dia_mantenimiento=dia_mantenimiento,
+            hora_mantenimiento=hora_mantenimiento,
+            descripcion=descripcion,
+            nro_departamento=nro_departamento,
+            usuario=usuario
+        )
+        # print("tener cuidado de un posible error ",id_usuario, self.request.user , fecha_visita, nro_personas)
+        
+        return super(mantenimiento_view, self).form_valid(form)
 
-#         fecha_visita = form.cleaned_data['fecha_visita']
-#         nro_personas = form.cleaned_data['nro_personas']
 
-#         Visita.objects.create(
-#             fecha_visita=fecha_visita,
-#             nro_personas=nro_personas,
-#             usuario=usuario
-#         )
-#         print("tener cuidado de un posible error ",id_usuario, self.request.user , fecha_visita, nro_personas)
-#         print("*************************estamos en los forma valid***************************")
-#         return super(visita_view, self).form_valid(form)
+class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
+    template_name = "mantenimiento/detalle_mantenimiento.html"
+    login_url = reverse_lazy("users:iniciar-sesion")
+
+    def get_queryset(self):
+
+        # espacio = self.kwargs['shorname']
+
+        lista = trabajo_mantenimiento.objects.filter(
+            usuario__users__username=self.request.user,
+        )
+        return lista
+
+
 
 class prueba(ListView):
     print("prueba")

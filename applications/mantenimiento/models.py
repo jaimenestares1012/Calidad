@@ -32,8 +32,9 @@ class trabajo_mantenimiento(models.Model):
     dia_mantenimiento=models.DateField("Fecha")
     hora_mantenimiento=models.CharField("Hora", max_length=12 ,choices=horas)
     descripcion=models.CharField("Descripción", max_length=60, blank=True)
-
-
+    nro_departamento=models.IntegerField("nro departamento", blank=True )
+    usuario=models.ForeignKey(Usuario , on_delete=models.CASCADE)
+    
 
 
     class Meta:

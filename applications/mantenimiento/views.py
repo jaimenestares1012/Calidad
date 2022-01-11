@@ -13,13 +13,15 @@ class ListaMantenimiento(LoginRequiredMixin, ListView):
     template_name = 'mantenimiento/lista-mantenimiento.html'
     login_url = reverse_lazy("users:iniciar-sesion")
     
-    # def get_queryset(self):
-    #     # visi1 = self.kwargs['shorname']
-    #     # lista = Visitantes.objects.filter(
-    #     #     visita__usuario__users__username=self.request.user,
-    #     #     visita=visi1
-    #     # )
-    #     return trabajo_mantenimiento
+
+    
+    def get_queryset(self):
+        # visi1 = self.kwargs['shorname']
+        # lista = Visitantes.objects.filter(
+        #     visita__usuario__users__username=self.request.user,
+        #     visita=visi1
+        # )
+        return trabajo_mantenimiento
 
 # class visita_view(LoginRequiredMixin, FormView):
 #     model =trabajo_mantenimiento

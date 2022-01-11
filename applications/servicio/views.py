@@ -25,6 +25,9 @@ class ListaServicios(LoginRequiredMixin, ListView):
             usuario__users__username=self.request.user,
             estado="Adeudado"
         )
+        
+            
+            
         return lista
 
 
@@ -46,13 +49,17 @@ class ListaRecibos(LoginRequiredMixin, ListView):
     login_url = reverse_lazy(variable)
 
     def get_queryset(self):
-
         lista = Servicio.objects.filter(
             usuario__users__username=self.request.user,
             estado="Pagado",
-
         )
-        return lista
+        tamano = len(lista)
+        if tamano==0:
+            lista=1
+            return lista
+        else:
+            return lista    
+        
 
 class ListPdf2(LoginRequiredMixin,View):
     login_url = reverse_lazy(variable)

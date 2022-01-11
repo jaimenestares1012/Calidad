@@ -9,9 +9,11 @@
 </head>
 
 <body>
+    
 
-    <h1 style="text-align: center;">Hola "{{user}}" este es tu reporte de pago</h1>
 
+    <h1 style="text-align: center;">Hola "{{user}}" estos son tus reportes de pago</h1>
+    {{object_list}}
     <div class="container">
         <div class="row">
             <div class="col-12 mt-3">
@@ -24,24 +26,28 @@
                 <div>
                     <h3>Lista de tus recibos Pagado</h3>
 
-                </div>
-
-
-                {% for e in object_list %}
-                <div class="col-12 mt-2">
-
-                    <div style="text-align: center;">
-                        <ul class="list-group">
-                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.servicio}}</li>
-                            <li class="list-group-item">Mes: {{e.mes}}</li>
-                            <li class="list-group-item">Monto a pagar: {{e.monto}}</li>
-                            <li class="list-group-item">Estado: {{e.estado}}</li>
-
-                        </ul>
-                        <a href="/servicio/lista_pdf2/{{e.id}}" class="btn btn-primary">Imprimir recibo</a>
+               
+                {% if object_list == 1 %}
+                
+                  <h1 style="margin-left: 320px; color: red; margin-top: 100px;">Usted no cuenta con ningún recibo cancelado</h1>
+                {% else %}
+                    {% for e in object_list %}
+                    <div class="col-12 mt-2">
+                    
+                        <div style="text-align: center;">
+                            <ul class="list-group">
+                                <li class="list-group-item" style="background-color: bisque; color:red;">{{e.servicio}}</li>
+                                <li class="list-group-item">Mes: {{e.mes}}</li>
+                                <li class="list-group-item">Monto a pagar: {{e.monto}}</li>
+                                <li class="list-group-item">Estado: {{e.estado}}</li>
+                    
+                            </ul>
+                            <a href="/servicio/lista_pdf2/{{e.id}}" class="btn btn-primary">Imprimir recibo</a>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
+                
             </div>
 
         </div>

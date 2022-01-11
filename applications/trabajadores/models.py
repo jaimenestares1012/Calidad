@@ -12,6 +12,7 @@ class Trabajador(models.Model):
      nombre_empleado= models.CharField('Nombre', max_length=50)
      apellidos_empleado=models.CharField('Apellidos', max_length=50)
      funcion= models.CharField('Funcion',max_length=50 ,choices=funciones)
+     
      class meta:
          verbose_name='Trabajador'
          verbose_name_plural='Trabajadores'

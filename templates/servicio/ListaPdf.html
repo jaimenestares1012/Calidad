@@ -14,7 +14,7 @@
         <h4>usuario : {{e.usuario}}</h4>
         <h4>Estado : {{e.estado}}</h4>
         <h4>Monto : {{e.monto}} soles</h4>
-
+        <h4>Fecha de pago: {{e.fecha_cancelacion}}</h4>
 
 
         <h2 style="text-align: center;">Tabla resumen</h2>
@@ -25,6 +25,7 @@
                 <th> Mes</th>
                 <th> Monto</th>
                 <th> estado</th>
+                <th> fecha </th>
             </head>
             <tbody>
                 
@@ -34,6 +35,7 @@
                     <td class="list-group-item">{{e.mes}}</td>
                     <td class="list-group-item">{{e.monto}}</td>
                     <td class="list-group-item">{{e.estado}}</td>
+                    <td class="list-group-item">{{e.fecha_cancelacion}}</td>
                 </tr>
                
             </tbody>

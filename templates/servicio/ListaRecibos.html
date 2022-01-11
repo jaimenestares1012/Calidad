@@ -12,7 +12,7 @@
     
 
 
-    <h1 style="text-align: center;">Hola "{{user}}" estos son tus reportes de pago</h1>
+    <h1 style="text-align: center;">Hola "{{user}}" estos son tus reportes de pagos</h1>
     {{object_list}}
     <div class="container">
         <div class="row">
@@ -40,7 +40,7 @@
                                 <li class="list-group-item">Mes: {{e.mes}}</li>
                                 <li class="list-group-item">Monto a pagar: {{e.monto}}</li>
                                 <li class="list-group-item">Estado: {{e.estado}}</li>
-                    
+                                <li class="list-group-item">fecha de pago: {{e.fecha_cancelacion}}</li>
                             </ul>
                             <a href="/servicio/lista_pdf2/{{e.id}}" class="btn btn-primary">Imprimir recibo</a>
                         </div>

@@ -45,7 +45,7 @@ class Servicio(models.Model):
      estado = models.CharField("Estado", max_length=20,choices=estado)
      mes = models.CharField("Mes", max_length=20, choices=meses)
      year=models.CharField("Año", max_length=10, choices=years )
-
+     fecha_cancelacion = models.CharField("fecha cancelacion", max_length=20, blank=True, default="-")
      usuario = models.ForeignKey(
          Usuario,
          

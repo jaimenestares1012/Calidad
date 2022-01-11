@@ -67,6 +67,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'applications.actividades.middleware.PruebaMiddleware',
+    'applications.servicio.middleware.MidServicios',
     'applications.visita.middleware.PruebaMiddlewareVisita',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

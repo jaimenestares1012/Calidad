@@ -20,6 +20,7 @@ class my_mantenimiento_form(forms.ModelForm):
             'dia_mantenimiento',
             'hora_mantenimiento',
             'descripcion',
+            'nro_departamento'
            
         )
         widgets = {
@@ -58,6 +59,7 @@ class ExternosForm(forms.ModelForm):
             'dni_externo',
             'nombre_externo',
             'apellido_externo',
+            
         
         )
         # widgets = {

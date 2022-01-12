@@ -97,6 +97,23 @@ class Externos_view(LoginRequiredMixin, FormView):
         print("*************************estamos en los forma valid")
         return super(Externos_view, self).form_valid(form)
 
+
+class list_externos(LoginRequiredMixin, ListView):
+    template_name = "mantenimiento/list_externos.html"
+    model = Externos
+    login_url = reverse_lazy("users:iniciar-sesion")
+    ###alarma de inserguridad, puede tener errores
+
+    def get_queryset(self):
+        visi1 = self.kwargs['shorname']
+        lista = Externos.objects.filter(
+            trabajo_mantenimientos__usuario__users__username=self.request.user,
+            trabajo_mantenimientos=visi1
+        )
+        return lista
+
+
+
 class prueba(ListView):
     print("prueba")
 # class visitantes_view(LoginRequiredMixin, FormView):

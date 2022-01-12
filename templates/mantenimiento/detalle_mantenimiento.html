@@ -1,12 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body>
-    <h1>estos son mis manteniemientos</h1>
-</body>
-</html>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3">
+
+                <form method="GET">
+
+                </form>
+                <h1 style="text-align: center;">Registro de mantenimientos pendientes</h1>
+                <h5 class="mt-5" style="text-align: left;">
+                    <a href="/" class="btn btn-success">Ir al inicio</a>
+                    <a href="/mantenimiento/lista-mantenimiento/usuario" class="btn btn-success">Ir atrás</a>
+                </h5>
+                <h5 class="mt-1" style="text-align: left;">
+
+                </h5>
+            
+                
+                {% for e in object_list %}
+                <div class="col-12">
+
+                    <div style="text-align: center;">
+                        <ul class="list-group">
+                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.dia_mantenimiento}}</li>
+                            <li class="list-group-item">Nro trabajadores: {{e.nro_trabajadores}}</li>
+                            <li class="list-group-item">Hora: {{e.hora_mantenimiento}}:00</li>
+                            <li class="list-group-item">Descripción: {{e.descripcion}}</li>
+                            <li class="list-group-item">Nro departamento: {{e.nro_departamento}}</li>
+                            <form method="GET"> {% csrf_token %}
+                                <a href="/mantenimiento/add_externos/{{e.id}}" class="btn btn-success">Registrar Trabajadores</a>
+                                <a href="/mantenimiento/list_externos/{{e.id}}" class="btn btn-success">Detalles de Trabajadores</a>
+                            </form>
+                        </ul>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    </html>
+
+    <style>
+        div[class|="col"] {
+            border: 1px solid #ffc107;
+        }
+    </style>

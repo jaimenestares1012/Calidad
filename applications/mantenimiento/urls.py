@@ -12,4 +12,6 @@ urlpatterns = [
          views.mantenimiento_view.as_view(),name="crear-mantenimiento"),
     path('mis-mantenimientos/',
          views.ListaMantenimientosPropias.as_view(), name="mis-mantenimiento"),
+    path('add_externos/<shorname>',
+         views.Externos_view.as_view(), name="add-externos"),
 ]

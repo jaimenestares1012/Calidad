@@ -2,7 +2,7 @@ from django import forms
 import datetime
 
 from django.forms import widgets
-from .models import trabajo_mantenimiento
+from .models import trabajo_mantenimiento, Externos
 
 
 class DateInput(forms.DateInput):
@@ -45,4 +45,40 @@ class my_mantenimiento_form(forms.ModelForm):
             raise forms.ValidationError("ingrese una fecha correcta de su reserva ")
 
         return fecha_reserva
-    
+
+
+class ExternosForm(forms.ModelForm):
+    """Form definition for visita."""
+
+    class Meta:
+        """Meta definition for visitaform."""
+
+        model = Externos
+        fields = (
+            'dni_externo',
+            'nombre_externo',
+            'apellido_externo',
+        
+        )
+        # widgets = {
+        #     'dni_visita': in
+        # }
+
+    # def clean_fecha_visita(self):
+
+    #     fecha_actual = datetime.date.today()
+    #     fecha_visita = self.cleaned_data['fecha_visita']
+    #     if fecha_visita < fecha_actual:
+    #         raise forms.ValidationError(
+    #             "ingrese una fecha correcta en su visita ")
+    #     return fecha_visita
+
+    def clean_dni_externo(self):
+        dni_visita = self.cleaned_data['dni_externo']
+
+        print(dni_visita, type(str(dni_visita)))
+        if len(str(dni_visita)) != 8:
+            print("dentro del ")
+            raise forms.ValidationError("ingrese un Dni válido ")
+
+        return dni_visita

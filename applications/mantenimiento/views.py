@@ -5,7 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 #################### impotamos el modelo para trabjar con ellas en el template
-from .forms import my_mantenimiento_form
+from .forms import my_mantenimiento_form, ExternosForm
 from applications.usuario.models import Usuario
 # Create your views here.
 class prueba(TemplateView):
@@ -71,6 +71,31 @@ class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
         return lista
 
 
+class Externos_view(LoginRequiredMixin, FormView):
+    model = Externos
+    template_name = "mantenimiento/add_externos.html"
+    login_url = reverse_lazy("users:iniciar-sesion")
+    form_class = ExternosForm
+    success_url = '/mantenimiento/mis-mantenimientos'
+
+    def form_valid(self, form):
+        visi1 = self.kwargs['shorname']
+        visi = trabajo_mantenimiento(
+            id=visi1,
+        )
+
+        dni = form.cleaned_data['dni_externo']
+        nombre = form.cleaned_data['nombre_externo']
+        apellido = form.cleaned_data['apellido_externo']
+
+        Externos.objects.create(
+            dni_externo=dni,
+            nombre_externo=nombre,
+            apellido_externo=apellido,
+            trabajo_mantenimientos=visi
+        )
+        print("*************************estamos en los forma valid")
+        return super(Externos_view, self).form_valid(form)
 
 class prueba(ListView):
     print("prueba")

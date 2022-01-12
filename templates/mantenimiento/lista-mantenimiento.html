@@ -14,11 +14,11 @@
                 <form method="GET">
     
                 </form>
-                <h1 style="text-align: center;">Trabajos de mantenimiento</h1>
-                <h5 class="mt-1" style="text-align: left;">Para reservar registrar algún trabajo sobre su departamento presione aquí:
+                <h1 style="text-align: center;">Trabajos de mantenimiento del edificio</h1>
+                <h5 class="mt-2" style="text-align: left;">Para reservar registrar algún trabajo sobre su departamento presione aquí:
                     <a href="/mantenimiento/crear-mantenimiento/" class="btn btn-success">Registrar mantenimiento</a>
                 </h5>
-                <h5 class="mt-1" style="text-align: left;">Para tu lista de mantenimientos presione aquí :
+                <h5 class="mt-2" style="text-align: left;">Para tu lista de mantenimientos presione aquí :
                     <a href="/mantenimiento/mis-mantenimientos" class="btn btn-success">Mis mantenimientos</a>
                 </h5>
                 <div>
@@ -38,7 +38,7 @@
                 
                     <div style="text-align: center;">
                         <ul class="list-group">
-                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.espacio}}</li>
+                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.dia_mantenimiento}}</li>
                             <li class="list-group-item">Nro trababajadores: {{e.nro_trabajadores}}</li>
                             <li class="list-group-item">Hora: {{e.hora_mantenimiento}}:00 </li>
                             <li class="list-group-item">Descripción: {{e.descripcion}}</li>

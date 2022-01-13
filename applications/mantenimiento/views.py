@@ -8,15 +8,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import my_mantenimiento_form, ExternosForm
 from applications.usuario.models import Usuario
 # Create your views here.
+variable = 'users:iniciar-sesion'
 class prueba(TemplateView):
     template_name='mantenimiento/prueba.html'
-
 #creacion del view lista de manterniemitnos
 class ListaMantenimiento(LoginRequiredMixin, ListView):
     # usamos nuestro template ya creado
     template_name = 'mantenimiento/lista-mantenimiento.html'
     # redirigimos si es que se inicio sesion bien
-    login_url = reverse_lazy("users:iniciar-sesion")
+    login_url = reverse_lazy(variable)
     
 
     # creamos el quieryset debido a que solo se muestra a usuarios logueados
@@ -36,7 +36,7 @@ class mantenimiento_view(LoginRequiredMixin, FormView):
     # seleccionamos el template
     template_name = "mantenimiento/add_mantenimiento.html"
     # se redirige la pagina
-    login_url = reverse_lazy("users:iniciar-sesion")
+    login_url = reverse_lazy(variable)
     # se selecciona el form creado
     form_class= my_mantenimiento_form
 
@@ -73,7 +73,7 @@ class mantenimiento_view(LoginRequiredMixin, FormView):
 class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
     # usmos nuestro template
     template_name = "mantenimiento/detalle_mantenimiento.html"
-    login_url = reverse_lazy("users:iniciar-sesion")
+    login_url = reverse_lazy(variable)
     # definismo un quiery set para los filtros
     def get_queryset(self):
 
@@ -92,7 +92,7 @@ class Externos_view(LoginRequiredMixin, FormView):
     # definimos nuestro template
     template_name = "mantenimiento/add_externos.html"
     # la redireccion si que no hay un  inicio de sesion
-    login_url = reverse_lazy("users:iniciar-sesion")
+    login_url = reverse_lazy(variable)
     # utirlizacion del form class
     form_class = ExternosForm
 
@@ -123,7 +123,7 @@ class list_externos(LoginRequiredMixin, ListView):
     template_name = "mantenimiento/list_externos.html"
     # DEFINIMOS UN MODELO PARA LOS EXTERNOS
     model = Externos
-    login_url = reverse_lazy("users:iniciar-sesion")
+    login_url = reverse_lazy(variable)
     # alarma de inserguridad, puede tener errores
     def get_queryset(self):
         visi1 = self.kwargs['shorname']

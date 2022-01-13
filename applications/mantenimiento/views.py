@@ -11,39 +11,52 @@ from applications.usuario.models import Usuario
 class prueba(TemplateView):
     template_name='mantenimiento/prueba.html'
 
+#creacion del view lista de manterniemitnos
 class ListaMantenimiento(LoginRequiredMixin, ListView):
+    # usamos nuestro template ya creado
     template_name = 'mantenimiento/lista-mantenimiento.html'
+    # redirigimos si es que se inicio sesion bien
     login_url = reverse_lazy("users:iniciar-sesion")
     
 
-    
+    # creamos el quieryset debido a que solo se muestra a usuarios logueados
     def get_queryset(self):
+        # tenemos el queryrset del modelo
         visi1 = self.kwargs['shorname']
+        # hacemos el filtro
         lista = trabajo_mantenimiento.objects.filter(
             usuario__users__username=self.request.user,
         )
+        # retornamos la lista filtrada
         return lista
 
 class mantenimiento_view(LoginRequiredMixin, FormView):
+    # se crea el modelo de trabajo mantenieminto
     model =trabajo_mantenimiento
+    # seleccionamos el template
     template_name = "mantenimiento/add_mantenimiento.html"
+    # se redirige la pagina
     login_url = reverse_lazy("users:iniciar-sesion")
+    # se selecciona el form creado
     form_class= my_mantenimiento_form
+
     success_url = '/mantenimiento/lista-mantenimiento/Usuarios'
+    #se define un froma valid para la validacion de entrada
     def form_valid(self, form):
-        
+        # se extrae el id del usuario con inicio de sesion abierto
         id_usuario = self.request.user.id
+        # se saca el id del usuario
         usuario = Usuario(
             id=id_usuario,
         )
-        
+        # se invoca los datos de los inputs
         nro_trabajadores = form.cleaned_data['nro_trabajadores']
         dia_mantenimiento = form.cleaned_data['dia_mantenimiento']
         hora_mantenimiento = form.cleaned_data['hora_mantenimiento']
         descripcion = form.cleaned_data['descripcion']
         nro_departamento = form.cleaned_data['nro_departamento']
         
-        
+        # se crea el isiaiio mendiante objects
         trabajo_mantenimiento.objects.create(
             nro_trabajadores=nro_trabajadores,
             dia_mantenimiento=dia_mantenimiento,
@@ -53,14 +66,15 @@ class mantenimiento_view(LoginRequiredMixin, FormView):
             usuario=usuario
         )
         # print("tener cuidado de un posible error ",id_usuario, self.request.user , fecha_visita, nro_personas)
-        
+        # se retona el un super esa lista creada
         return super(mantenimiento_view, self).form_valid(form)
 
-
+# se crea la vista para manteniemintos propios
 class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
+    # usmos nuestro template
     template_name = "mantenimiento/detalle_mantenimiento.html"
     login_url = reverse_lazy("users:iniciar-sesion")
-
+    # definismo un quiery set para los filtros
     def get_queryset(self):
 
         # espacio = self.kwargs['shorname']
@@ -68,42 +82,49 @@ class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
         lista = trabajo_mantenimiento.objects.filter(
             usuario__users__username=self.request.user,
         )
+        # retoramos la lista con el firltro de usuarios
         return lista
 
-
+#cremos la vista para los externos
 class Externos_view(LoginRequiredMixin, FormView):
+    # definismo el modelo
     model = Externos
+    # definimos nuestro template
     template_name = "mantenimiento/add_externos.html"
+    # la redireccion si que no hay un  inicio de sesion
     login_url = reverse_lazy("users:iniciar-sesion")
+    # utirlizacion del form class
     form_class = ExternosForm
-    success_url = '/mantenimiento/mis-mantenimientos'
 
+    success_url = '/mantenimiento/mis-mantenimientos'
+    # definimos el form valid
     def form_valid(self, form):
         visi1 = self.kwargs['shorname']
         visi = trabajo_mantenimiento(
             id=visi1,
         )
-
+        # extraemos los datos ingresados por el usuario
         dni = form.cleaned_data['dni_externo']
         nombre = form.cleaned_data['nombre_externo']
         apellido = form.cleaned_data['apellido_externo']
-
+        # creamos un obejts para ingresarlos a la base de datos
         Externos.objects.create(
             dni_externo=dni,
             nombre_externo=nombre,
             apellido_externo=apellido,
             trabajo_mantenimientos=visi
         )
+        # retornamos el objeto creado
         print("*************************estamos en los forma valid")
         return super(Externos_view, self).form_valid(form)
 
-
+# se define un view para la lista de externos
 class list_externos(LoginRequiredMixin, ListView):
     template_name = "mantenimiento/list_externos.html"
+    # DEFINIMOS UN MODELO PARA LOS EXTERNOS
     model = Externos
     login_url = reverse_lazy("users:iniciar-sesion")
-    ###alarma de inserguridad, puede tener errores
-
+    # alarma de inserguridad, puede tener errores
     def get_queryset(self):
         visi1 = self.kwargs['shorname']
         lista = Externos.objects.filter(

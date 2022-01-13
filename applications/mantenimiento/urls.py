@@ -2,9 +2,11 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-
+# de define el nomnbre de las urls globales
 app_name = "mantenimiento"
+# se crean los urls patterms
 urlpatterns = [
+# crea path por path
     path('', views.prueba.as_view()),
     path('lista-mantenimiento/<shorname>',
          views.ListaMantenimiento.as_view(),name="lista-mantenimiento"),

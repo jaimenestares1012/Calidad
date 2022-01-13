@@ -4,8 +4,9 @@ from .models import Actividades
 
 
 
-
+# Registramos a las activdades en el admin
 class ActividadesAdmin(admin.ModelAdmin):
+    #selecciionamos las variables a obersvar
     list_display=(
         'id',
         'fecha_reserva',
@@ -14,9 +15,9 @@ class ActividadesAdmin(admin.ModelAdmin):
         'estado',
         'usuario',
     )
-
+    # estos son los filtos qque se usan
     list_filter=('espacio',)
+    # Este es la opcion de busqueda d
     search_fields=('usuario',)
-
-
+# registradfo y vinculado
 admin.site.register(Actividades, ActividadesAdmin)

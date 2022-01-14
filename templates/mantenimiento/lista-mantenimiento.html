@@ -33,26 +33,30 @@
                     <a href="/mantenimiento/lista-mantenimiento/Administracion" class="btn btn-danger">Administracion</a>
                  
                 </div>
-                {% for e in object_list %}
-                <div class="col-12">
+                {% if object_list == 1 %}
                 
-                    <div style="text-align: center;">
-                        <ul class="list-group">
-                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.dia_mantenimiento}}</li>
-                            <li class="list-group-item">Nro trababajadores: {{e.nro_trabajadores}}</li>
-                            <li class="list-group-item">Hora: {{e.hora_mantenimiento}}:00 </li>
-                            <li class="list-group-item">Descripción: {{e.descripcion}}</li>
-                            <li class="list-group-item">departamento: {{e.nro_departamento}}</li>
-                            <li class="list-group-item">usuario: {{e.usuario}}</li>
-                            <!-- <form method="GET"> {% csrf_token %}
-                                <a href="/mantenimiento/add_trabajadores/{{e.id}}" class="btn btn-success">Registrar trabajadores</a>
-                                <a href="/mantenimiento/detalles/{{e.id}}" class="btn btn-success">Detalles de trabajadores</a>
-                            </form> -->
-                        </ul>
+                <h1 style="margin-left: 230px; color: red; margin-top: 150px;">No hay mantenimientos pendientes en el edificio</h1>
+                {% else %}
+                    {% for e in object_list %}
+                    <div class="col-12">
+                    
+                        <div style="text-align: center;">
+                            <ul class="list-group">
+                                <li class="list-group-item" style="background-color: bisque; color:red;">{{e.dia_mantenimiento}}</li>
+                                <li class="list-group-item">Nro trababajadores: {{e.nro_trabajadores}}</li>
+                                <li class="list-group-item">Hora: {{e.hora_mantenimiento}}:00 </li>
+                                <li class="list-group-item">Descripción: {{e.descripcion}}</li>
+                                <li class="list-group-item">departamento: {{e.nro_departamento}}</li>
+                                <li class="list-group-item">usuario: {{e.usuario}}</li>
+                                <!-- <form method="GET"> {% csrf_token %}
+                                    <a href="/mantenimiento/add_trabajadores/{{e.id}}" class="btn btn-success">Registrar trabajadores</a>
+                                    <a href="/mantenimiento/detalles/{{e.id}}" class="btn btn-success">Detalles de trabajadores</a>
+                                </form> -->
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
-                
+                    {% endfor %}
+                {% endif %}
             </div>
     
         </div>

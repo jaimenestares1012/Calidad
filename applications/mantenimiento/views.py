@@ -27,8 +27,16 @@ class ListaMantenimiento(LoginRequiredMixin, ListView):
         lista = trabajo_mantenimiento.objects.filter(
             usuario__users__username=self.request.user,
         )
-        # retornamos la lista filtrada
-        return lista
+        # se guarda el tamano de la lista filtrada
+        tamano = len(lista)
+        # se es igual a 0 se retona un numero en su lugar
+        if tamano == 0:
+            lista = 1
+            # retornamos un valor para que se muestre el mensaje de alerta
+            return lista
+        else:
+            return lista
+        # retoramos la lista con el firltro de usuarios
 
 class mantenimiento_view(LoginRequiredMixin, FormView):
     # se crea el modelo de trabajo mantenieminto
@@ -82,8 +90,17 @@ class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
         lista = trabajo_mantenimiento.objects.filter(
             usuario__users__username=self.request.user,
         )
+        # se guarda el tamano de la lista filtrada
+        tamano = len(lista)
+        # se es igual a 0 se retona un numero en su lugar
+        if tamano == 0:
+            lista = 1
+            # retornamos un valor para que se muestre el mensaje de alerta
+            return lista
+        else:
+            return lista
         # retoramos la lista con el firltro de usuarios
-        return lista
+        
 
 #cremos la vista para los externos
 class Externos_view(LoginRequiredMixin, FormView):
@@ -131,7 +148,16 @@ class list_externos(LoginRequiredMixin, ListView):
             trabajo_mantenimientos__usuario__users__username=self.request.user,
             trabajo_mantenimientos=visi1
         )
-        return lista
+        # guarfamos el valor de lista, tamaño
+        tamano = len(lista)
+        # se es igual a 00 se retona un numero en su lugar
+        if tamano == 0:
+            lista = 1
+            # retornamos un vador para que se muestre el mensaje de alerta
+            return lista
+        else:
+            return lista
+        
 
 
 

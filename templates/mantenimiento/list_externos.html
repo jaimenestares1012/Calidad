@@ -16,20 +16,24 @@
 
                     <a href="/" class="btn btn-success">Ir al inicio</a>
                     <a href="/mantenimiento/mis-mantenimientos/" class="btn btn-success">Regresar al atras</a>
-
+                    {% if object_list == 1 %}
+                    
+                    <h1 style="margin-left: 300px; color: red; margin-top: 100px;">Usted no ha registrado a nadie aún</h1>
+                    {% else %}
                     {% for e in object_list %}
-                    <div class="col-12">
-                        <div style="text-align: center;">
-                            <ul class="list-group">
-                                <li class="list-group-item" style="background-color: bisque; color:red;"></li>
-                                <li class="list-group-item">Dni: {{e.dni_externo}} </li>
-                                <li class="list-group-item">Nombre: {{e.nombre_externo}} </li>
-                                <li class="list-group-item">Apellido: {{e.apellido_externo}} </li>
-                                
-                            </ul>
+                        <div class="col-12">
+                            <div style="text-align: center;">
+                                <ul class="list-group">
+                                    <li class="list-group-item" style="background-color: bisque; color:red;"></li>
+                                    <li class="list-group-item">Dni: {{e.dni_externo}} </li>
+                                    <li class="list-group-item">Nombre: {{e.nombre_externo}} </li>
+                                    <li class="list-group-item">Apellido: {{e.apellido_externo}} </li>
+                                    
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
 
             </div>

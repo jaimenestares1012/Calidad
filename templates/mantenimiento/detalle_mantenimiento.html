@@ -22,26 +22,30 @@
 
                 </h5>
             
+                {% if object_list == 1 %}
                 
-                {% for e in object_list %}
-                <div class="col-12">
+                <h1 style="margin-left: 150px; color: red; margin-top: 100px;">Usted no cuenta con ningún mantenimiento pendiente</h1>
+                {% else %}
+                    {% for e in object_list %}
+                    <div class="col-12">
 
-                    <div style="text-align: center;">
-                        <ul class="list-group">
-                            <li class="list-group-item" style="background-color: bisque; color:red;">{{e.dia_mantenimiento}}</li>
-                            <li class="list-group-item">Nro trabajadores: {{e.nro_trabajadores}}</li>
-                            <li class="list-group-item">Hora: {{e.hora_mantenimiento}}:00</li>
-                            <li class="list-group-item">Descripción: {{e.descripcion}}</li>
-                            <li class="list-group-item">Nro departamento: {{e.nro_departamento}}</li>
-                            <form method="GET"> {% csrf_token %}
-                                <a href="/mantenimiento/add_externos/{{e.id}}" class="btn btn-success">Registrar Trabajadores</a>
-                                <a href="/mantenimiento/list_externos/{{e.id}}" class="btn btn-success">Detalles de Trabajadores</a>
-                            </form>
-                        </ul>
-                        
+                        <div style="text-align: center;">
+                            <ul class="list-group">
+                                <li class="list-group-item" style="background-color: bisque; color:red;">{{e.dia_mantenimiento}}</li>
+                                <li class="list-group-item">Nro trabajadores: {{e.nro_trabajadores}}</li>
+                                <li class="list-group-item">Hora: {{e.hora_mantenimiento}}:00</li>
+                                <li class="list-group-item">Descripción: {{e.descripcion}}</li>
+                                <li class="list-group-item">Nro departamento: {{e.nro_departamento}}</li>
+                                <form method="GET"> {% csrf_token %}
+                                    <a href="/mantenimiento/add_externos/{{e.id}}" class="btn btn-success">Registrar Trabajadores</a>
+                                    <a href="/mantenimiento/list_externos/{{e.id}}" class="btn btn-success">Detalles de Trabajadores</a>
+                                </form>
+                            </ul>
+                            
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
             </div>
 
         </div>

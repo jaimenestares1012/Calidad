@@ -40,7 +40,7 @@ class visita_view(LoginRequiredMixin, FormView):
 
         fecha_visita = form.cleaned_data['fecha_visita']
         nro_personas = form.cleaned_data['nro_personas']
-
+    
         Visita.objects.create(
             fecha_visita=fecha_visita,
             nro_personas=nro_personas,

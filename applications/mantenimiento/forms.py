@@ -87,6 +87,38 @@ class my_mantenimiento_form(forms.ModelForm):
             # retornamos el valor del depa inggresado si es que pasó por todas las validaciones
         return nro_departamento
 
+
+    def clean_hora_mantenimiento(self):
+        # fecha actual
+        fecha_actual = datetime.date.today()
+
+        # fecha actual con hora
+        fecha_actualconhora = datetime.datetime.now()
+
+        # se extrae la hora
+        hora = fecha_actualconhora.hour
+        print("esta es la fecha actual", fecha_actual, hora)
+
+        # se extrae la fecha de la visita
+        fecha_visita = self.cleaned_data['dia_mantenimiento']
+
+        # se extrae lo que eligio el usuario
+        hora_mantenimiento = self.cleaned_data['hora_mantenimiento']
+
+        print("estos son los datos dados por el usuario",
+              fecha_visita, hora_mantenimiento , type(hora_mantenimiento), type(hora))
+
+        if fecha_actual == fecha_visita:
+            # print("la fecha a reservar es hoy", hora, hora_mantenimiento)
+
+            
+            raise forms.ValidationError(
+                "No puede registrar algo para hoy mismo, minimo 24 horas de anticipación")
+                
+            # retornamos el valor del depa inggresaddddo si es que pasó por todas las validaciones
+        return hora_mantenimiento
+
+
 # se crea el form externos
 class ExternosForm(forms.ModelForm):
     """Form definition for visita."""
@@ -103,18 +135,7 @@ class ExternosForm(forms.ModelForm):
             
         
         )
-        # widgets = {
-        #     'dni_visita': in
-        # }
-
-    # def clean_fecha_visita(self):
-
-    #     fecha_actual = datetime.date.today()
-    #     fecha_visita = self.cleaned_data['fecha_visita']
-    #     if fecha_visita < fecha_actual:
-    #         raise forms.ValidationError(
-    #             "ingrese una fecha correcta en su visita ")
-    #     return fecha_visita
+        
 
     # definimos el clean para el dni y su validacion
     def clean_dni_externo(self):

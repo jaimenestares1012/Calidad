@@ -39,6 +39,7 @@ class visita_form(forms.ModelForm):
         if fecha_visita>fecha1:
             raise forms.ValidationError(
                 "ingrese una fecha más proxima, fecha máxima: 2023-01-01")
+                
         if fecha_visita<fecha_actual:
             raise forms.ValidationError("ingrese una fecha correcta en su visita ")
 

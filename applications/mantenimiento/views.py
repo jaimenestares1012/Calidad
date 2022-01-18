@@ -73,7 +73,7 @@ class mantenimiento_view(LoginRequiredMixin, FormView):
             nro_departamento=nro_departamento,
             usuario=usuario
         )
-        # print("tener cuidado de un posible error ",id_usuario, self.request.user , fecha_visita, nro_personas)
+        
         # se retona el un super esa lista creada
         return super(mantenimiento_view, self).form_valid(form)
 

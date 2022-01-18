@@ -109,7 +109,6 @@ class my_mantenimiento_form(forms.ModelForm):
               fecha_visita, hora_mantenimiento , type(hora_mantenimiento), type(hora))
 
         if fecha_actual == fecha_visita:
-            # print("la fecha a reservar es hoy", hora, hora_mantenimiento)
 
             
             raise forms.ValidationError(

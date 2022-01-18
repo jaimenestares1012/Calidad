@@ -14,7 +14,7 @@ class Visita(models.Model):
          verbose_name='Visita'
          verbose_name_plural='Visitas'
      def __str__(self):
-         return "Usuario" + str(self.usuario) + ","+ " visita: " + str(self.id)
+         return "Usuario" + str(self.usuario) + "," + " visita: " + str(self.id) + " + " + "fecha_visita: " + str(self.fecha_visita) + " nro_personas: " + str(self.nro_personas)
 
 
 class Visitantes(models.Model):

@@ -85,7 +85,7 @@ class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
     # definismo un quiery set para los filtros
     def get_queryset(self):
 
-        # espacio = self.kwargs['shorname']
+        
 
         lista = trabajo_mantenimiento.objects.filter(
             usuario__users__username=self.request.user,
@@ -163,41 +163,3 @@ class list_externos(LoginRequiredMixin, ListView):
 
 class prueba(ListView):
     print("prueba")
-# class visitantes_view(LoginRequiredMixin, FormView):
-#     model = Visitantes
-#     template_name = "visita/add_visitantes.html"
-#     login_url = reverse_lazy(variable)
-#     form_class = visitantes_form
-#     success_url = reverse_lazy('visita:lista_visita')
-
-#     def form_valid(self, form):
-#         visi1 = self.kwargs['shorname']
-#         visi=Visita(
-#             id=visi1,
-#         )
-
-#         dni = form.cleaned_data['dni_visita']
-#         nombre = form.cleaned_data['nombre_visita']
-#         apellido = form.cleaned_data['apellido_visita']
-        
-#         Visitantes.objects.create(
-#             dni_visita=dni,
-#             nombre_visita=nombre,
-#             apellido_visita=apellido,
-#             visita=visi
-#         )
-#         print("*************************estamos en los forma valid")
-#         return super(visitantes_view, self).form_valid(form)
-
-
-# class list_visitantes(LoginRequiredMixin, ListView):
-#     template_name = 'visita/lista-visitantes.html'
-#     model = Visitantes
-#     login_url = reverse_lazy(variable)
-#     ###alarma de inserguridad, puede tener errores
-#     def get_queryset(self):
-#         visi1 = self.kwargs['shorname']
-#         lista = Visitantes.objects.filter(
-#             visita__usuario__users__username=self.request.user,
-#             visita=visi1
-#         )

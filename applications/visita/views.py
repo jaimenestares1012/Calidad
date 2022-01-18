@@ -38,6 +38,12 @@ class visita_view(LoginRequiredMixin, FormView):
             id=id_usuario,
         )
 
+        lista = Visita.objects.filter(
+            usuario__users__username=self.request.user,)
+        for a in lista:
+            print(a.nro_personas)
+            print(a.fecha_visita)
+
         fecha_visita = form.cleaned_data['fecha_visita']
         nro_personas = form.cleaned_data['nro_personas']
     

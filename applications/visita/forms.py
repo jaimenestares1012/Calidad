@@ -33,7 +33,7 @@ class visita_form(forms.ModelForm):
         horamaxima=feckddk.hour
         print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44", horamaxima, hora)
         
-       
+     
         fecha_visita=self.cleaned_data['fecha_visita']
         fecha1 = datetime.date(2023, 1, 1)
         if fecha_visita>fecha1:

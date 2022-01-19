@@ -46,7 +46,6 @@ class my_mantenimiento_form(forms.ModelForm):
             # se muestra el mensjae de validacion
             raise forms.ValidationError("ingrese una fecha más proxima, fecha máxima: 2023-01-01")
         print(type(fecha1))
-        # fecha_reserva=fecha_reserva.split("-")
 
         print("wdeidiededede", fecha_reserva)
         # se intenta validar la faecha ingresada

@@ -22,7 +22,6 @@ class ListaMantenimiento(LoginRequiredMixin, ListView):
     # creamos el quieryset debido a que solo se muestra a usuarios logueados
     def get_queryset(self):
         # tenemos el queryrset del modelo
-        visi1 = self.kwargs['shorname']
         # hacemos el filtro
         lista = trabajo_mantenimiento.objects.filter(
             usuario__users__username=self.request.user,
@@ -84,9 +83,6 @@ class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
     login_url = reverse_lazy(variable)
     # definismo un quiery set para los filtros
     def get_queryset(self):
-
-        
-
         lista = trabajo_mantenimiento.objects.filter(
             usuario__users__username=self.request.user,
         )
@@ -103,7 +99,7 @@ class ListaMantenimientosPropias(LoginRequiredMixin, ListView):
         
 
 #cremos la vista para los externos
-class Externos_view(LoginRequiredMixin, FormView):
+class ExternosView(LoginRequiredMixin, FormView):
     # definismo el modelo
     model = Externos
     # definimos nuestro template
@@ -133,7 +129,7 @@ class Externos_view(LoginRequiredMixin, FormView):
         )
         # retornamos el objeto creado
         print("*************************estamos en los forma valid")
-        return super(Externos_view, self).form_valid(form)
+        return super(ExternosView, self).form_valid(form)
 
 # se define un view para la lista de externos
 class list_externos(LoginRequiredMixin, ListView):
@@ -157,9 +153,6 @@ class list_externos(LoginRequiredMixin, ListView):
             return lista
         else:
             return lista
-        
-
-
 
 class prueba(ListView):
     print("prueba")

@@ -42,7 +42,6 @@ class my_actividades_form(forms.ModelForm):
             raise forms.ValidationError(
                 "ingrese una fecha más proxima, fecha máxima: 2023-01-01")
         print(type(fecha1))
-        # fecha_reserva=fecha_reserva.split("-")
         print("wdeidiededede",fecha_reserva)
         # hacemos la segunda validacion, para que se ingrese la correcta
         if fecha_reserva < fecha_actual:

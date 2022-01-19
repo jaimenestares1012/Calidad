@@ -59,6 +59,7 @@ class LoginForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(LoginForm, self).clean() 
+        print(cleaned_data)
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
 

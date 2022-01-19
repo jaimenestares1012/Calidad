@@ -2,5 +2,5 @@ projectKey=ProyectoCondominio
 serverUrl=http://localhost:9000
 serverVersion=9.2.1.49989
 dashboardUrl=http://localhost:9000/dashboard?id=ProyectoCondominio
-ceTaskId=AX5sV9Z4QHqo9LFF7sDc
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AX5sV9Z4QHqo9LFF7sDc
+ceTaskId=AX5wWcYbewTiTCkhmUmk
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AX5wWcYbewTiTCkhmUmk

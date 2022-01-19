@@ -33,7 +33,7 @@ class visita_form(forms.ModelForm):
         horamaxima=feckddk.hour
         print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44", horamaxima, hora)
         
-       
+     
         fecha_visita=self.cleaned_data['fecha_visita']
         fecha1 = datetime.date(2023, 1, 1)
         if fecha_visita>fecha1:
@@ -72,18 +72,7 @@ class visitantes_form(forms.ModelForm):
             'nombre_visita',
             'apellido_visita',
         )
-        # widgets = {
-        #     'dni_visita': in
-        # }
-
-    # def clean_fecha_visita(self):
-
-    #     fecha_actual = datetime.date.today()
-    #     fecha_visita = self.cleaned_data['fecha_visita']
-    #     if fecha_visita < fecha_actual:
-    #         raise forms.ValidationError(
-    #             "ingrese una fecha correcta en su visita ")
-    #     return fecha_visita
+       
 
     def clean_dni_visita(self):
         dni_visita = self.cleaned_data['dni_visita']

@@ -120,7 +120,9 @@ class list_visitantes(LoginRequiredMixin, ListView):
     login_url = reverse_lazy(variable)
     ###alarma de inserguridad, puede tener errores
     def get_queryset(self):
+        # se captura el shorname
         visi1 = self.kwargs['shorname']
+        # se hace el filtro
         lista = Visitantes.objects.filter(
             visita__usuario__users__username=self.request.user,
             visita=visi1

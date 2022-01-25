@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
-
+# se crea el nombre del path padre
 app_name = "visita"
 urlpatterns = [
     path('prueba/', views.prueba.as_view(), name="lista_visita"),

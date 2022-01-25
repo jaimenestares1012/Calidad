@@ -1,6 +1,6 @@
 
 
-from .base import *
+from .base import get_secret
 
 
 

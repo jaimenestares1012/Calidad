@@ -1,9 +1,11 @@
 from django.contrib import admin
+# se importa la visita y los viistantes
 from .models import Visita, Visitantes
 # Register your models here.
 
-
+# se crea el visita
 class VisitaAdmin(admin.ModelAdmin):
+    # se cerea el viseeta
     list_display=(
         'estado',
         'id',
@@ -12,12 +14,13 @@ class VisitaAdmin(admin.ModelAdmin):
         'usuario',
     )
     
-    
+    # se hace la busqueda
     search_fields=('fecha_visita',)
-
+# re registra la visita
 admin.site.register(Visita, VisitaAdmin)
-
+# re crea el admin
 class VisitantesAdmin(admin.ModelAdmin):
+    # se crea el display
     list_display=(
         'id',
         'visita',
@@ -27,7 +30,7 @@ class VisitantesAdmin(admin.ModelAdmin):
 
     )
     
-    
+    # se creal el filtro
     search_fields=('fecha_visita',)
-
+# se crea el registro en el amdin
 admin.site.register(Visitantes, VisitantesAdmin)
